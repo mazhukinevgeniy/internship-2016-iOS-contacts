@@ -9,10 +9,12 @@
 /* Begin PBXBuildFile section */
 		8419C6011DC7E93300ECE223 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8419C6001DC7E93300ECE223 /* main.m */; };
 		8419C6041DC7E93300ECE223 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8419C6031DC7E93300ECE223 /* AppDelegate.m */; };
-		8419C6071DC7E93300ECE223 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8419C6061DC7E93300ECE223 /* ViewController.m */; };
+		8419C6071DC7E93300ECE223 /* ContactInfoController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8419C6061DC7E93300ECE223 /* ContactInfoController.m */; };
 		8419C60A1DC7E93300ECE223 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8419C6081DC7E93300ECE223 /* Main.storyboard */; };
 		8419C60C1DC7E93300ECE223 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8419C60B1DC7E93300ECE223 /* Assets.xcassets */; };
 		8419C60F1DC7E93300ECE223 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8419C60D1DC7E93300ECE223 /* LaunchScreen.storyboard */; };
+		84C646C71DC8A3A600499C70 /* ContactsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C646C61DC8A3A600499C70 /* ContactsController.m */; };
+		84C646CA1DC8A43F00499C70 /* HistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C646C91DC8A43F00499C70 /* HistoryController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,12 +22,16 @@
 		8419C6001DC7E93300ECE223 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8419C6021DC7E93300ECE223 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8419C6031DC7E93300ECE223 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		8419C6051DC7E93300ECE223 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		8419C6061DC7E93300ECE223 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		8419C6051DC7E93300ECE223 /* ContactInfoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContactInfoController.h; sourceTree = "<group>"; };
+		8419C6061DC7E93300ECE223 /* ContactInfoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContactInfoController.m; sourceTree = "<group>"; };
 		8419C6091DC7E93300ECE223 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8419C60B1DC7E93300ECE223 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8419C60E1DC7E93300ECE223 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8419C6101DC7E93300ECE223 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84C646C51DC8A3A600499C70 /* ContactsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsController.h; sourceTree = "<group>"; };
+		84C646C61DC8A3A600499C70 /* ContactsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsController.m; sourceTree = "<group>"; };
+		84C646C81DC8A43F00499C70 /* HistoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryController.h; sourceTree = "<group>"; };
+		84C646C91DC8A43F00499C70 /* HistoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,13 +66,17 @@
 			children = (
 				8419C6021DC7E93300ECE223 /* AppDelegate.h */,
 				8419C6031DC7E93300ECE223 /* AppDelegate.m */,
-				8419C6051DC7E93300ECE223 /* ViewController.h */,
-				8419C6061DC7E93300ECE223 /* ViewController.m */,
+				8419C6051DC7E93300ECE223 /* ContactInfoController.h */,
+				8419C6061DC7E93300ECE223 /* ContactInfoController.m */,
 				8419C6081DC7E93300ECE223 /* Main.storyboard */,
 				8419C60B1DC7E93300ECE223 /* Assets.xcassets */,
 				8419C60D1DC7E93300ECE223 /* LaunchScreen.storyboard */,
 				8419C6101DC7E93300ECE223 /* Info.plist */,
 				8419C5FF1DC7E93300ECE223 /* Supporting Files */,
+				84C646C51DC8A3A600499C70 /* ContactsController.h */,
+				84C646C61DC8A3A600499C70 /* ContactsController.m */,
+				84C646C81DC8A43F00499C70 /* HistoryController.h */,
+				84C646C91DC8A43F00499C70 /* HistoryController.m */,
 			);
 			path = contacts;
 			sourceTree = "<group>";
@@ -150,8 +160,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8419C6071DC7E93300ECE223 /* ViewController.m in Sources */,
+				84C646CA1DC8A43F00499C70 /* HistoryController.m in Sources */,
+				8419C6071DC7E93300ECE223 /* ContactInfoController.m in Sources */,
 				8419C6041DC7E93300ECE223 /* AppDelegate.m in Sources */,
+				84C646C71DC8A3A600499C70 /* ContactsController.m in Sources */,
 				8419C6011DC7E93300ECE223 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -307,6 +319,7 @@
 				8419C6151DC7E93300ECE223 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

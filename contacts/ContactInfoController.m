@@ -6,17 +6,21 @@
 //  Copyright © 2016 noname. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "ContactInfoController.h"
 
-@interface ViewController ()
+@interface ContactInfoController ()
 
 @end
 
-@implementation ViewController
+@implementation ContactInfoController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+}
+
+- (IBAction)editButtonTouched:(id)sender {
+    [self performSegueWithIdentifier:@"editContact" sender:sender];
 }
 
 
