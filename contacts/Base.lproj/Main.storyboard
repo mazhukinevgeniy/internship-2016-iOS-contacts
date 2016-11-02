@@ -159,10 +159,10 @@
             </objects>
             <point key="canvasLocation" x="1309.5999999999999" y="-410.64467766116945"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Primary View Controller-->
         <scene sceneID="Aa8-sT-ejB">
             <objects>
-                <tabBarController id="KzK-0d-b71" sceneMemberID="viewController">
+                <tabBarController id="KzK-0d-b71" customClass="PrimaryViewController" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="8ny-JI-uLE"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="vid-6H-ggU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
