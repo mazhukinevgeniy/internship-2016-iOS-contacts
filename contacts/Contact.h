@@ -17,12 +17,12 @@
 
 @property (readonly, getter=getID) int identifier;
 @property (readonly) NSString *firstName;
-@property (readonly) NSString *secondName;
+@property (readonly) NSString *lastName;
 @property (readonly) NSString *number;
 
 -(Contact*) initWith:(int)identifier firstName:(NSString*)fName
-      secondName:(NSString*)sName number:(NSString*)phoneNumber;
+            lastName:(NSString*)lName number:(NSString*)phoneNumber;
 +(Contact*) initWith:(int)identifier firstName:(NSString*)fName
-          secondName:(NSString*)sName number:(NSString*)phoneNumber;
+            lastName:(NSString*)lName number:(NSString*)phoneNumber;
 
 @end
