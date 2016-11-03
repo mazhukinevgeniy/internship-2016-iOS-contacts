@@ -20,4 +20,9 @@
 @property (readonly) NSString *secondName;
 @property (readonly) NSString *number;
 
+-(Contact*) initWith:(int)identifier firstName:(NSString*)fName
+      secondName:(NSString*)sName number:(NSString*)phoneNumber;
++(Contact*) initWith:(int)identifier firstName:(NSString*)fName
+          secondName:(NSString*)sName number:(NSString*)phoneNumber;
+
 @end
