@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ContactStorage.h"
 
-@interface HistoryController : UIViewController
+@interface HistoryController : UIViewController<ContactStorageUser>
 
 @end

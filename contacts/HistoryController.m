@@ -8,7 +8,9 @@
 
 #import "HistoryController.h"
 
-@interface HistoryController ()
+@interface HistoryController()
+
+@property (strong) ContactStorage* storage;
 
 @end
 
@@ -17,6 +19,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+- (void)useContactStorage:(ContactStorage*)storage {
+    self.storage = storage;
 }
 
 - (IBAction)callInfoTouched:(id)sender {

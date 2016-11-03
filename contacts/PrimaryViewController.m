@@ -9,10 +9,6 @@
 #import "PrimaryViewController.h"
 #import "ContactStorage.h"
 
-@interface PrimaryViewController ()
-
-@end
-
 @implementation PrimaryViewController
 
 - (void)viewDidLoad {
@@ -20,6 +16,11 @@
     
     ContactStorage * storage = [[ContactStorage alloc] init];
     //TODO: add some contacts
+    
+    for (NSObject<ContactStorageUser>* controller in [self viewControllers])
+    {
+        [controller useContactStorage:storage];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

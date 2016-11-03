@@ -8,15 +8,22 @@
 
 #import "ContactsController.h"
 
-@interface ContactsController ()
+@interface ContactsController()
+
+@property (strong) ContactStorage* storage;
 
 @end
+
 
 @implementation ContactsController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+}
+
+- (void)useContactStorage:(ContactStorage*)storage {
+    self.storage = storage;
 }
 
 - (IBAction)contactInfoTouched:(id)sender {
