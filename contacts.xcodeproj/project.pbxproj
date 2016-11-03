@@ -73,25 +73,15 @@
 		8419C5FE1DC7E93300ECE223 /* contacts */ = {
 			isa = PBXGroup;
 			children = (
+				84C70D5D1DCB5A06002D03AB /* model */,
+				84C70D5C1DCB59D4002D03AB /* viewControllers */,
 				8419C6021DC7E93300ECE223 /* AppDelegate.h */,
 				8419C6031DC7E93300ECE223 /* AppDelegate.m */,
-				8419C6051DC7E93300ECE223 /* ContactInfoController.h */,
-				8419C6061DC7E93300ECE223 /* ContactInfoController.m */,
 				8419C6081DC7E93300ECE223 /* Main.storyboard */,
 				8419C60B1DC7E93300ECE223 /* Assets.xcassets */,
 				8419C60D1DC7E93300ECE223 /* LaunchScreen.storyboard */,
 				8419C6101DC7E93300ECE223 /* Info.plist */,
 				8419C5FF1DC7E93300ECE223 /* Supporting Files */,
-				84C646C51DC8A3A600499C70 /* ContactsController.h */,
-				84C646C61DC8A3A600499C70 /* ContactsController.m */,
-				84C646C81DC8A43F00499C70 /* HistoryController.h */,
-				84C646C91DC8A43F00499C70 /* HistoryController.m */,
-				84C205B41DC9DFF2000A4440 /* Contact.m */,
-				84C205B61DC9E030000A4440 /* Contact.h */,
-				84C205B71DC9E676000A4440 /* PrimaryViewController.h */,
-				84C205B81DC9E676000A4440 /* PrimaryViewController.m */,
-				84C205BA1DC9EA52000A4440 /* ContactStorage.h */,
-				84C205BB1DC9EC5C000A4440 /* ContactStorage.m */,
 			);
 			path = contacts;
 			sourceTree = "<group>";
@@ -102,6 +92,32 @@
 				8419C6001DC7E93300ECE223 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		84C70D5C1DCB59D4002D03AB /* viewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				8419C6051DC7E93300ECE223 /* ContactInfoController.h */,
+				8419C6061DC7E93300ECE223 /* ContactInfoController.m */,
+				84C646C51DC8A3A600499C70 /* ContactsController.h */,
+				84C646C61DC8A3A600499C70 /* ContactsController.m */,
+				84C646C81DC8A43F00499C70 /* HistoryController.h */,
+				84C646C91DC8A43F00499C70 /* HistoryController.m */,
+				84C205B71DC9E676000A4440 /* PrimaryViewController.h */,
+				84C205B81DC9E676000A4440 /* PrimaryViewController.m */,
+			);
+			name = viewControllers;
+			sourceTree = "<group>";
+		};
+		84C70D5D1DCB5A06002D03AB /* model */ = {
+			isa = PBXGroup;
+			children = (
+				84C205B41DC9DFF2000A4440 /* Contact.m */,
+				84C205B61DC9E030000A4440 /* Contact.h */,
+				84C205BA1DC9EA52000A4440 /* ContactStorage.h */,
+				84C205BB1DC9EC5C000A4440 /* ContactStorage.m */,
+			);
+			name = model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
