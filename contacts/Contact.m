@@ -23,12 +23,16 @@
 
 -(Contact*) initWith:(int)identifier firstName:(NSString*)fName
             lastName:(NSString*)lName number:(NSString*)phoneNumber {
-    self.identifier = identifier;
-    self.firstName = fName;
-    self.lastName = lName;
-    self.number = phoneNumber;
-    
-    return self;
+    if (self = [super init]) {
+        self.identifier = identifier;
+        self.firstName = fName;
+        self.lastName = lName;
+        self.number = phoneNumber;
+        
+        return self;
+    }
+    else
+        return nil;
 }
 +(Contact*) initWith:(int)identifier firstName:(NSString*)fName
             lastName:(NSString*)lName number:(NSString*)phoneNumber {
