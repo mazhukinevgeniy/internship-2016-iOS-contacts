@@ -10,7 +10,14 @@
 
 @interface ContactStorage : NSObject
 
+- (ContactStorage*) init;
++ (ContactStorage*) init;
+
 - (void) addContact:(Contact*)contact;
+
+//must return actual contact if 0 <= position < getNumberOfContacts
+- (Contact*) getContact:(long)position;
+- (long) getNumberOfContacts;
 
 @end
 
