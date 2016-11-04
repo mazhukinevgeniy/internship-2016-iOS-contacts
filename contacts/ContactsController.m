@@ -11,6 +11,7 @@
 @interface ContactsController()
 
 @property (strong) ContactStorage* storage;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -22,13 +23,55 @@
     // Do any additional setup after loading the view.
 }
 
-- (void)useContactStorage:(ContactStorage*)storage {
-    self.storage = storage;
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    assert(_tableView != nil);
+    
+    if (_tableView.delegate == nil)
+    {
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+    }
+    
+    [_tableView reloadData];
 }
 
-- (IBAction)contactInfoTouched:(id)sender {
-    [self performSegueWithIdentifier:@"showContact" sender:sender];
+
+#pragma mark - defined by protocols
+
+- (void)useContactStorage:(ContactStorage*)storage {
+    _storage = storage;
 }
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [_storage getNumberOfContacts];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSString * cellIdentifier = @"contactViewCell";
+    
+    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:cellIdentifier];
+    }
+    
+    [[cell textLabel] setText:[_storage getContact:indexPath.row].firstName];
+    //TODO: show firstname lastname and phone number
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self performSegueWithIdentifier:@"showContact" sender:nil];
+}
+
+#pragma mark - other methods
 
 - (IBAction)addButtonTouched:(id)sender {
     [self performSegueWithIdentifier:@"addContact" sender:sender];

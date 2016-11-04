@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <UIKit/UITableView.h>
 #import "ContactStorage.h"
 
-@interface ContactsController : UIViewController<ContactStorageUser>
+@interface ContactsController : UIViewController<ContactStorageUser, UITableViewDelegate, UITableViewDataSource>
 
 @end
