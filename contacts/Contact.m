@@ -41,13 +41,18 @@
     return [[Contact alloc] initWith:identifier firstName:fName lastName:lName number:phoneNumber];
 }
 
--(NSString*) toString {
+
+-(NSString*) fullName {
     if ([_firstName length] == 0)
-        return [NSString stringWithFormat:@"%@ %@", _lastName, _number];
+        return _lastName;
     else if ([_lastName length] == 0)
-        return [NSString stringWithFormat:@"%@ %@", _firstName, _number];
+        return _firstName;
     else
-        return [NSString stringWithFormat:@"%@ %@ %@", _firstName, _lastName, _number];
+        return [NSString stringWithFormat:@"%@ %@", _firstName, _lastName];
+}
+
+-(NSString*) toString {
+    return [NSString stringWithFormat:@"%@ %@", [self fullName], _number];
 }
 
 @end
