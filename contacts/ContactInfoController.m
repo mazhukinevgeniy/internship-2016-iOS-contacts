@@ -7,16 +7,33 @@
 //
 
 #import "ContactInfoController.h"
+#import "Contact.h"
 
 @interface ContactInfoController ()
+
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *numberLabel;
+
+@property (strong) Contact* contact;
 
 @end
 
 @implementation ContactInfoController
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [_nameLabel setText:[_contact fullName]];
+    [_numberLabel setText:_contact.number];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+}
+
+-(void) useContact:(Contact*)contact {
+    _contact = contact;
 }
 
 - (IBAction)editButtonTouched:(id)sender {

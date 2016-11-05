@@ -7,6 +7,7 @@
 //
 
 #import "ContactsController.h"
+#import "ContactInfoController.h"
 
 @interface ContactsController()
 
@@ -69,7 +70,19 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self performSegueWithIdentifier:@"showContact" sender:nil];
+    [self performSegueWithIdentifier:@"showContact" sender:[_storage getContact:indexPath.row]];
+}
+
+#pragma mark - prepareForSegue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    [super prepareForSegue:segue sender:sender];
+    
+    if ([segue.identifier isEqualToString:@"showContact"]) {
+        ContactInfoController* contactInfoController = (ContactInfoController*)segue.destinationViewController;
+        
+        [contactInfoController useContact:sender];
+    }
 }
 
 #pragma mark - other methods
