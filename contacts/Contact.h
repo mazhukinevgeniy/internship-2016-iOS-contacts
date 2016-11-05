@@ -25,4 +25,6 @@
 +(Contact*) initWith:(int)identifier firstName:(NSString*)fName
             lastName:(NSString*)lName number:(NSString*)phoneNumber;
 
+-(NSString*) toString;
+
 @end

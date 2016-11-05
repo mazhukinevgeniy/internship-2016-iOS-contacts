@@ -63,18 +63,7 @@
     
     Contact * contact = [_storage getContact:indexPath.row];
     
-    NSString *fName = contact.firstName, *lName = contact.lastName, *number = contact.number;
-    
-    NSString * info;
-    
-    if ([fName length] == 0)
-        info = [NSString stringWithFormat:@"%@ %@", lName, number];
-    else if ([lName length] == 0)
-        info = [NSString stringWithFormat:@"%@ %@", fName, number];
-    else
-        info = [NSString stringWithFormat:@"%@ %@ %@", contact.firstName, contact.lastName, contact.number];
-    
-    [[cell textLabel] setText:info];
+    [[cell textLabel] setText:[contact toString]];
     return cell;
 }
 

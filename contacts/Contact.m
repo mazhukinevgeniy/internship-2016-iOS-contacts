@@ -23,6 +23,8 @@
 
 -(Contact*) initWith:(int)identifier firstName:(NSString*)fName
             lastName:(NSString*)lName number:(NSString*)phoneNumber {
+    assert([fName length] + [lName length] > 0);
+    
     if (self = [super init]) {
         self.identifier = identifier;
         self.firstName = fName;
@@ -37,6 +39,15 @@
 +(Contact*) initWith:(int)identifier firstName:(NSString*)fName
             lastName:(NSString*)lName number:(NSString*)phoneNumber {
     return [[Contact alloc] initWith:identifier firstName:fName lastName:lName number:phoneNumber];
+}
+
+-(NSString*) toString {
+    if ([_firstName length] == 0)
+        return [NSString stringWithFormat:@"%@ %@", _lastName, _number];
+    else if ([_lastName length] == 0)
+        return [NSString stringWithFormat:@"%@ %@", _firstName, _number];
+    else
+        return [NSString stringWithFormat:@"%@ %@ %@", _firstName, _lastName, _number];
 }
 
 @end
