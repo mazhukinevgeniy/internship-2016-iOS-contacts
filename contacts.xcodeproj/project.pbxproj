@@ -18,6 +18,7 @@
 		84C205BC1DC9EC5C000A4440 /* DataStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C205BB1DC9EC5C000A4440 /* DataStorage.m */; };
 		84C646C71DC8A3A600499C70 /* ContactsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C646C61DC8A3A600499C70 /* ContactsController.m */; };
 		84C646CA1DC8A43F00499C70 /* HistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C646C91DC8A43F00499C70 /* HistoryController.m */; };
+		84CDF3CD1DCF626A001B125D /* Call.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CDF3CC1DCF626A001B125D /* Call.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,8 @@
 		84C646C61DC8A3A600499C70 /* ContactsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsController.m; sourceTree = "<group>"; };
 		84C646C81DC8A43F00499C70 /* HistoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryController.h; sourceTree = "<group>"; };
 		84C646C91DC8A43F00499C70 /* HistoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryController.m; sourceTree = "<group>"; };
+		84CDF3CB1DCF626A001B125D /* Call.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Call.h; sourceTree = "<group>"; };
+		84CDF3CC1DCF626A001B125D /* Call.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Call.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +119,8 @@
 				84C205B61DC9E030000A4440 /* Contact.h */,
 				84C205BA1DC9EA52000A4440 /* DataStorage.h */,
 				84C205BB1DC9EC5C000A4440 /* DataStorage.m */,
+				84CDF3CB1DCF626A001B125D /* Call.h */,
+				84CDF3CC1DCF626A001B125D /* Call.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -194,6 +199,7 @@
 				84C205B91DC9E676000A4440 /* PrimaryViewController.m in Sources */,
 				84C646CA1DC8A43F00499C70 /* HistoryController.m in Sources */,
 				8419C6071DC7E93300ECE223 /* ContactInfoController.m in Sources */,
+				84CDF3CD1DCF626A001B125D /* Call.m in Sources */,
 				8419C6041DC7E93300ECE223 /* AppDelegate.m in Sources */,
 				84C205BC1DC9EC5C000A4440 /* DataStorage.m in Sources */,
 				84C646C71DC8A3A600499C70 /* ContactsController.m in Sources */,

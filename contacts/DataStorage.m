@@ -13,6 +13,7 @@
 @interface DataStorage()
 
 @property (strong) NSMutableArray* contacts;
+@property (strong) NSMutableArray* calls;
 
 @end
 
@@ -21,6 +22,7 @@
 - (DataStorage*) init {
     if ( self = [super init] ) {
         _contacts = [[NSMutableArray alloc] init];
+        _calls = [[NSMutableArray alloc] init];
         
         return self;
     }
@@ -30,6 +32,8 @@
 + (DataStorage*) init {
     return [[DataStorage alloc] init];
 }
+
+#pragma mark - contacts
 
 - (void) addContact:(Contact*)contact {
     assert(contact != nil);
@@ -46,6 +50,25 @@
 
 - (long) getNumberOfContacts {
     return [_contacts count];
+}
+
+#pragma mark - calls
+
+- (void) addCall:(Call *)call {
+    assert(call != nil);
+    
+    [_calls addObject:call];
+}
+
+- (Call*) getCall:(long)position {
+    assert(position >= 0);
+    assert(position < [_calls count]);
+    
+    return _calls[position];
+}
+
+- (long) getNumberOfCalls {
+    return [_calls count];
 }
 
 @end

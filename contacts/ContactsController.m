@@ -94,7 +94,11 @@
     
     UIAlertController* callAlert = [UIAlertController alertControllerWithTitle:@"Calling" message:[contact fullName] preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"End call" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"End call"
+            style:UIAlertActionStyleDefault
+            handler:^(UIAlertAction * action) {
+                [_storage addCall:[Call initWithTarget:contact andDate:[NSDate date]]];
+            }];
     
     [callAlert addAction:defaultAction];
     [self presentViewController:callAlert animated:YES completion:nil];

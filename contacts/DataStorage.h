@@ -7,6 +7,7 @@
 //
 
 #import "Contact.h"
+#import "Call.h"
 
 @interface DataStorage : NSObject
 
@@ -14,10 +15,15 @@
 + (DataStorage*) init;
 
 - (void) addContact:(Contact*)contact;
+- (void) addCall:(Call*)call;
 
 //must return actual contact if 0 <= position < getNumberOfContacts
 - (Contact*) getContact:(long)position;
 - (long) getNumberOfContacts;
+
+//must return actual call if 0 <= position < getNumberOfCalls
+- (Call*) getCall:(long)position;
+- (long) getNumberOfCalls;
 
 @end
 
