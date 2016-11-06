@@ -8,10 +8,10 @@
 
 #import "Contact.h"
 
-@interface ContactStorage : NSObject
+@interface DataStorage : NSObject
 
-- (ContactStorage*) init;
-+ (ContactStorage*) init;
+- (DataStorage*) init;
++ (DataStorage*) init;
 
 - (void) addContact:(Contact*)contact;
 
@@ -21,8 +21,8 @@
 
 @end
 
-@protocol ContactStorageUser
+@protocol DataStorageUser
 
-- (void) useContactStorage:(ContactStorage*)storage;
+- (void) useDataStorage:(DataStorage*)storage;
 
 @end

@@ -7,11 +7,11 @@
 //
 
 #import "PrimaryViewController.h"
-#import "ContactStorage.h"
+#import "DataStorage.h"
 
 @interface PrimaryViewController()
 
-- (void)addSampleContacts:(ContactStorage *)storage;
+- (void)addSampleContacts:(DataStorage *)storage;
 
 @end
 
@@ -22,23 +22,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    ContactStorage * storage = [[ContactStorage alloc] init];
+    DataStorage * storage = [DataStorage init];
     [self addSampleContacts:storage];
     
-    for (NSObject<ContactStorageUser>* controller in [self viewControllers])
-    {
-        [controller useContactStorage:storage];
+    for (NSObject<DataStorageUser>* controller in [self viewControllers]) {
+        [controller useDataStorage:storage];
     }
 }
 
-- (void)addSampleContacts:(ContactStorage *)storage {
+- (void)addSampleContacts:(DataStorage *)storage {
     NSArray * ids = @[@0, @1, @2, @3];
     NSArray * names = @[@"Bob", @"", @"Disable roaming", @"Sara"];
     NSArray * lastNames = @[@"", @"Vasiliev", @"", @"Poppins"];
     NSArray * numbers = @[@"89123", @"01", @"#101*", @"89654"];
     
-    for (int i = 0; i < 4; i++)
-    {
+    for (int i = 0; i < 4; i++) {
         Contact * contact = [Contact initWith:(int)ids[i] firstName:names[i]
                                     lastName:lastNames[i]
                                        number:numbers[i]];

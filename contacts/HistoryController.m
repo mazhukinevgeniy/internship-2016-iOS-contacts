@@ -10,7 +10,7 @@
 
 @interface HistoryController()
 
-@property (strong) ContactStorage* storage;
+@property (strong) DataStorage* storage;
 
 @end
 
@@ -21,8 +21,8 @@
     // Do any additional setup after loading the view.
 }
 
-- (void)useContactStorage:(ContactStorage*)storage {
-    self.storage = storage;
+- (void)useDataStorage:(DataStorage*)storage {
+    _storage = storage;
 }
 
 - (IBAction)callInfoTouched:(id)sender {

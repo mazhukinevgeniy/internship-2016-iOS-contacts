@@ -8,17 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
-#import "ContactStorage.h"
+#import "DataStorage.h"
 
-@interface ContactStorage()
+@interface DataStorage()
 
 @property (strong) NSMutableArray* contacts;
 
 @end
 
-@implementation ContactStorage
+@implementation DataStorage
 
-- (ContactStorage*) init {
+- (DataStorage*) init {
     if ( self = [super init] ) {
         _contacts = [[NSMutableArray alloc] init];
         
@@ -27,8 +27,8 @@
     else
         return nil;
 }
-+ (ContactStorage*) init {
-    return [[ContactStorage alloc] init];
++ (DataStorage*) init {
+    return [[DataStorage alloc] init];
 }
 
 - (void) addContact:(Contact*)contact {

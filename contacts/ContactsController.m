@@ -11,7 +11,7 @@
 
 @interface ContactsController()
 
-@property (strong) ContactStorage* storage;
+@property (strong) DataStorage* storage;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
@@ -41,7 +41,7 @@
 
 #pragma mark - defined by protocols
 
-- (void)useContactStorage:(ContactStorage*)storage {
+- (void)useDataStorage:(DataStorage*)storage {
     _storage = storage;
 }
 
