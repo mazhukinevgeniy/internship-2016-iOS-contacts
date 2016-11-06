@@ -21,25 +21,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NKS-mM-bkA">
-                                <rect key="frame" x="85" y="159" width="205" height="90"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Bp4-Cf-zBh">
+                                <rect key="frame" x="67" y="108" width="240" height="470"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Temporary call info"/>
-                                <connections>
-                                    <action selector="callInfoTouched:" destination="3ss-fS-pws" eventType="touchUpInside" id="juc-5H-nP6"/>
-                                </connections>
-                            </button>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="callViewCell" id="17d-Il-Lo4">
+                                        <rect key="frame" x="0.0" y="28" width="240" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="17d-Il-Lo4" id="S88-vC-iie">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="5HF-4U-X53"/>
                     <connections>
+                        <outlet property="tableView" destination="Bp4-Cf-zBh" id="lZ8-4u-7jd"/>
                         <segue destination="K6U-bR-1bJ" kind="show" identifier="showContact" id="FwP-1h-eww"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eya-Mv-AvS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1310" y="349"/>
+            <point key="canvasLocation" x="1309.5999999999999" y="348.57571214392806"/>
         </scene>
         <!--Contact-->
         <scene sceneID="3gW-r4-XKZ">
@@ -215,7 +223,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="4Go-LS-vyz"/>
+        <segue reference="FwP-1h-eww"/>
         <segue reference="iQ2-3B-eTq"/>
     </inferredMetricsTieBreakers>
 </document>

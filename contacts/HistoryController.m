@@ -7,10 +7,12 @@
 //
 
 #import "HistoryController.h"
+#import "ContactInfoController.h"
 
 @interface HistoryController()
 
 @property (strong) DataStorage* storage;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -21,13 +23,71 @@
     // Do any additional setup after loading the view.
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    assert(_tableView != nil);
+    
+    if (_tableView.delegate == nil)
+    {
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+    }
+    
+    [_tableView reloadData];
+}
+
 - (void)useDataStorage:(DataStorage*)storage {
     _storage = storage;
 }
 
-- (IBAction)callInfoTouched:(id)sender {
-    [self performSegueWithIdentifier:@"showContact" sender:sender];
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
 }
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [_storage getNumberOfCalls];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSString * cellIdentifier = @"callViewCell";
+    
+    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:cellIdentifier];
+    }
+    
+    Call * call = [_storage getCall:indexPath.row];
+    
+    NSString *dateString = [NSDateFormatter localizedStringFromDate:call.date
+                            dateStyle:NSDateFormatterShortStyle
+                            timeStyle:NSDateFormatterShortStyle];
+    
+    [[cell textLabel] setText:[NSString stringWithFormat:@"%@ %@",
+                               dateString, [call.callTarget fullName]]];
+    //TODO: make info more visible, it doesn't fit
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self performSegueWithIdentifier:@"showContact" sender:[_storage getCall:indexPath.row].callTarget];
+}
+
+#pragma mark - prepareForSegue
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    [super prepareForSegue:segue sender:sender];
+    
+    if ([segue.identifier isEqualToString:@"showContact"]) {
+        ContactInfoController* contactInfoController = (ContactInfoController*)segue.destinationViewController;
+        
+        [contactInfoController useContact:sender];
+    }
+}
+
+#pragma mark - other methods
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "DataStorage.h"
 
-@interface HistoryController : UIViewController<DataStorageUser>
+@interface HistoryController : UIViewController<DataStorageUser, UITableViewDelegate, UITableViewDataSource>
 
 @end
