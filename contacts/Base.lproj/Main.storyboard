@@ -163,6 +163,17 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="h72-ef-0KS" id="0qe-qF-WOk">
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wjb-zv-1OF">
+                                                    <rect key="frame" x="164" y="7" width="46" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="0.84822889397905765" green="0.84822889397905765" blue="0.84822889397905765" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <state key="normal" title="Call"/>
+                                                    <connections>
+                                                        <action selector="callButtonTouched:" destination="5ta-SX-5pt" eventType="touchUpInside" id="miZ-b6-Q2e"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -205,6 +216,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="4Go-LS-vyz"/>
-        <segue reference="xgt-2y-oCE"/>
+        <segue reference="iQ2-3B-eTq"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -86,6 +86,19 @@
 }
 
 #pragma mark - other methods
+- (IBAction)callButtonTouched:(id)sender {
+    CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:_tableView];
+    NSIndexPath* indexPath = [_tableView indexPathForRowAtPoint:buttonPosition];
+    
+    Contact * contact = [_storage getContact:indexPath.row];
+    
+    UIAlertController* callAlert = [UIAlertController alertControllerWithTitle:@"Calling" message:[contact fullName] preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"End call" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {}];
+    
+    [callAlert addAction:defaultAction];
+    [self presentViewController:callAlert animated:YES completion:nil];
+}
 
 - (IBAction)addButtonTouched:(id)sender {
     [self performSegueWithIdentifier:@"addContact" sender:sender];
