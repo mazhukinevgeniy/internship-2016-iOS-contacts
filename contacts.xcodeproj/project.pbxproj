@@ -18,6 +18,7 @@
 		84C205BC1DC9EC5C000A4440 /* DataStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C205BB1DC9EC5C000A4440 /* DataStorage.m */; };
 		84C646C71DC8A3A600499C70 /* ContactsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C646C61DC8A3A600499C70 /* ContactsController.m */; };
 		84C646CA1DC8A43F00499C70 /* HistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C646C91DC8A43F00499C70 /* HistoryController.m */; };
+		84CCE7421DD317EF0002BDEE /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84CCE7401DD317EF0002BDEE /* DataModel.xcdatamodeld */; };
 		84CDF3CD1DCF626A001B125D /* Call.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CDF3CC1DCF626A001B125D /* Call.m */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +43,7 @@
 		84C646C61DC8A3A600499C70 /* ContactsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsController.m; sourceTree = "<group>"; };
 		84C646C81DC8A43F00499C70 /* HistoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryController.h; sourceTree = "<group>"; };
 		84C646C91DC8A43F00499C70 /* HistoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryController.m; sourceTree = "<group>"; };
+		84CCE7411DD317EF0002BDEE /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		84CDF3CB1DCF626A001B125D /* Call.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Call.h; sourceTree = "<group>"; };
 		84CDF3CC1DCF626A001B125D /* Call.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Call.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,6 +87,7 @@
 				8419C60D1DC7E93300ECE223 /* LaunchScreen.storyboard */,
 				8419C6101DC7E93300ECE223 /* Info.plist */,
 				8419C5FF1DC7E93300ECE223 /* Supporting Files */,
+				84CCE7401DD317EF0002BDEE /* DataModel.xcdatamodeld */,
 			);
 			path = contacts;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84C205B91DC9E676000A4440 /* PrimaryViewController.m in Sources */,
+				84CCE7421DD317EF0002BDEE /* DataModel.xcdatamodeld in Sources */,
 				84C646CA1DC8A43F00499C70 /* HistoryController.m in Sources */,
 				8419C6071DC7E93300ECE223 /* ContactInfoController.m in Sources */,
 				84CDF3CD1DCF626A001B125D /* Call.m in Sources */,
@@ -362,6 +366,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		84CCE7401DD317EF0002BDEE /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				84CCE7411DD317EF0002BDEE /* DataModel.xcdatamodel */,
+			);
+			currentVersion = 84CCE7411DD317EF0002BDEE /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8419C5F41DC7E93200ECE223 /* Project object */;
 }
