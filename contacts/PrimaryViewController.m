@@ -6,6 +6,7 @@
 //  Copyright © 2016 noname. All rights reserved.
 //
 
+#import "AppDelegate.h"
 #import "PrimaryViewController.h"
 #import "DataStorage.h"
 
@@ -22,7 +23,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    DataStorage * storage = [DataStorage init];
+    NSPersistentContainer * container = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).persistentContainer;
+    DataStorage * storage = [DataStorage initWithPersistentContainer:container];
     [self addSampleContacts:storage];
     
     for (NSObject<DataStorageUser>* controller in [self viewControllers]) {

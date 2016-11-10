@@ -8,11 +8,12 @@
 
 #import "Contact.h"
 #import "Call.h"
+#import <CoreData/CoreData.h>
 
 @interface DataStorage : NSObject
 
-- (DataStorage*) init;
-+ (DataStorage*) init;
+- (DataStorage*) initWithPersistentContainer:(NSPersistentContainer*)container;
++ (DataStorage*) initWithPersistentContainer:(NSPersistentContainer*)container;
 
 - (void) addContact:(Contact*)contact;
 - (void) addCall:(Call*)call;

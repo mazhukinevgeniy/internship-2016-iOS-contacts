@@ -19,7 +19,7 @@
 
 @implementation DataStorage
 
-- (DataStorage*) init {
+- (DataStorage*) initWithPersistentContainer:(NSPersistentContainer*)container {
     if ( self = [super init] ) {
         _contacts = [[NSMutableArray alloc] init];
         _calls = [[NSMutableArray alloc] init];
@@ -29,8 +29,8 @@
     else
         return nil;
 }
-+ (DataStorage*) init {
-    return [[DataStorage alloc] init];
++ (DataStorage*) initWithPersistentContainer:(NSPersistentContainer*)container {
+    return [[DataStorage alloc] initWithPersistentContainer:container];
 }
 
 #pragma mark - contacts
