@@ -15,14 +15,13 @@
 
 @interface Contact : NSObject
 
-@property (readonly, getter=getID) int identifier;
 @property (readonly) NSString *firstName;
 @property (readonly) NSString *lastName;
 @property (readonly) NSString *number;
 
--(Contact*) initWith:(int)identifier firstName:(NSString*)fName
+-(Contact*) initWithFirstName:(NSString*)fName
             lastName:(NSString*)lName number:(NSString*)phoneNumber;
-+(Contact*) initWith:(int)identifier firstName:(NSString*)fName
++(Contact*) initWithFirstName:(NSString*)fName
             lastName:(NSString*)lName number:(NSString*)phoneNumber;
 
 -(NSString*) fullName;

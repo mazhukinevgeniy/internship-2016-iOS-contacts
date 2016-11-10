@@ -37,16 +37,11 @@
         } else {
             _contacts = [[NSMutableArray alloc] initWithCapacity:[results count] + 10];
             
-            for (long i = 0, size = [results count]; i < size; i++){
-                NSManagedObject* contact = results[i];
-            
-            //for (NSManagedObject* contact in results) {
-                [_contacts addObject:[Contact initWith:i
-                                             firstName:[contact valueForKey:FIRST_NAME_KEY]
-                                              lastName:[contact valueForKey:LAST_NAME_KEY]
-                                                number:[contact valueForKey:NUMBER_KEY]]];
+            for (NSManagedObject* contact in results) {
+                [_contacts addObject:[Contact initWithFirstName:[contact valueForKey:FIRST_NAME_KEY]
+                                                       lastName:[contact valueForKey:LAST_NAME_KEY]
+                                                         number:[contact valueForKey:NUMBER_KEY]]];
                 
-                //TODO: remove id from Contact
                 //TODO: create method like initWithManagedObject:(NSManagedObject*)contact
             }
         }

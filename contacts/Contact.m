@@ -12,7 +12,6 @@
 
 @interface Contact()
 
-@property (readwrite) int identifier;
 @property (readwrite) NSString *firstName;
 @property (readwrite) NSString *lastName;
 @property (readwrite) NSString *number;
@@ -21,12 +20,11 @@
 
 @implementation Contact
 
--(Contact*) initWith:(int)identifier firstName:(NSString*)fName
+-(Contact*) initWithFirstName:(NSString*)fName
             lastName:(NSString*)lName number:(NSString*)phoneNumber {
     assert([fName length] + [lName length] > 0);
     
     if (self = [super init]) {
-        self.identifier = identifier;
         self.firstName = fName;
         self.lastName = lName;
         self.number = phoneNumber;
@@ -36,9 +34,9 @@
     else
         return nil;
 }
-+(Contact*) initWith:(int)identifier firstName:(NSString*)fName
++(Contact*) initWithFirstName:(NSString*)fName
             lastName:(NSString*)lName number:(NSString*)phoneNumber {
-    return [[Contact alloc] initWith:identifier firstName:fName lastName:lName number:phoneNumber];
+    return [[Contact alloc] initWithFirstName:fName lastName:lName number:phoneNumber];
 }
 
 
