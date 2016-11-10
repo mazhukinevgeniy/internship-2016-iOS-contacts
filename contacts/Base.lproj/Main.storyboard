@@ -30,9 +30,12 @@
                                         <rect key="frame" x="0.0" y="28" width="240" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="17d-Il-Lo4" id="S88-vC-iie">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="K6U-bR-1bJ" kind="show" identifier="showContact" id="cRM-nX-EWz"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -42,7 +45,6 @@
                     <tabBarItem key="tabBarItem" title="Item 2" id="5HF-4U-X53"/>
                     <connections>
                         <outlet property="tableView" destination="Bp4-Cf-zBh" id="lZ8-4u-7jd"/>
-                        <segue destination="K6U-bR-1bJ" kind="show" identifier="showContact" id="FwP-1h-eww"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eya-Mv-AvS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -183,6 +185,9 @@
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="K6U-bR-1bJ" kind="show" identifier="showContact" id="gC1-FD-8Ni"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -194,7 +199,6 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="ab1-cU-5V2" id="sNh-sn-8ri"/>
-                        <segue destination="K6U-bR-1bJ" kind="show" identifier="showContact" id="4Go-LS-vyz"/>
                         <segue destination="hHz-EQ-5F6" kind="show" identifier="addContact" id="iQ2-3B-eTq"/>
                     </connections>
                 </viewController>
@@ -223,7 +227,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="FwP-1h-eww"/>
+        <segue reference="cRM-nX-EWz"/>
         <segue reference="iQ2-3B-eTq"/>
     </inferredMetricsTieBreakers>
 </document>

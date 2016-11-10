@@ -68,11 +68,6 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [self performSegueWithIdentifier:@"showContact" sender:[_storage getContact:indexPath.row]];
-}
-
 #pragma mark - prepareForSegue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -81,7 +76,7 @@
     if ([segue.identifier isEqualToString:@"showContact"]) {
         ContactInfoController* contactInfoController = (ContactInfoController*)segue.destinationViewController;
         
-        [contactInfoController useContact:sender];
+        [contactInfoController useContact:[_storage getContact:[_tableView indexPathForSelectedRow].row]];
     }
 }
 
