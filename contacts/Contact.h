@@ -6,12 +6,6 @@
 //  Copyright © 2016 noname. All rights reserved.
 //
 
-#ifndef Contact_h
-#define Contact_h
-
-
-#endif /* Contact_h */
-
 
 @interface Contact : NSObject
 

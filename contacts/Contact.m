@@ -12,10 +12,6 @@
 
 @interface Contact()
 
-@property (readwrite) NSString *firstName;
-@property (readwrite) NSString *lastName;
-@property (readwrite) NSString *number;
-
 @end
 
 @implementation Contact
@@ -25,9 +21,9 @@
     assert([fName length] + [lName length] > 0);
     
     if (self = [super init]) {
-        self.firstName = fName;
-        self.lastName = lName;
-        self.number = phoneNumber;
+        _firstName = fName;
+        _lastName = lName;
+        _number = phoneNumber;
         
         return self;
     }

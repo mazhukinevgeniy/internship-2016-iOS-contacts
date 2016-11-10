@@ -10,9 +10,6 @@
 
 @interface Call()
 
-@property (strong, readwrite) Contact * callTarget;
-@property (strong, readwrite) NSDate * date;
-
 @end
 
 @implementation Call
