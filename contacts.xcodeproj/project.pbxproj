@@ -17,6 +17,8 @@
 		84C205BC1DC9EC5C000A4440 /* DataStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C205BB1DC9EC5C000A4440 /* DataStorage.m */; };
 		84C34C9A1DD47F1D003332A8 /* Call.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C34C971DD47F1D003332A8 /* Call.m */; };
 		84C34C9B1DD47F1D003332A8 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C34C991DD47F1D003332A8 /* Contact.m */; };
+		84C34CA81DD488E7003332A8 /* SegueNames.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C34CA71DD488E7003332A8 /* SegueNames.m */; };
+		84C34CAB1DD489C7003332A8 /* CoreDataKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C34CAA1DD489C7003332A8 /* CoreDataKeys.m */; };
 		84C646C71DC8A3A600499C70 /* ContactsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C646C61DC8A3A600499C70 /* ContactsController.m */; };
 		84C646CA1DC8A43F00499C70 /* HistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C646C91DC8A43F00499C70 /* HistoryController.m */; };
 		84CCE7421DD317EF0002BDEE /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84CCE7401DD317EF0002BDEE /* DataModel.xcdatamodeld */; };
@@ -41,6 +43,10 @@
 		84C34C971DD47F1D003332A8 /* Call.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Call.m; sourceTree = "<group>"; };
 		84C34C981DD47F1D003332A8 /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Contact.h; sourceTree = "<group>"; };
 		84C34C991DD47F1D003332A8 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Contact.m; sourceTree = "<group>"; };
+		84C34CA61DD488E7003332A8 /* SegueNames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegueNames.h; sourceTree = "<group>"; };
+		84C34CA71DD488E7003332A8 /* SegueNames.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegueNames.m; sourceTree = "<group>"; };
+		84C34CA91DD489C7003332A8 /* CoreDataKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataKeys.h; sourceTree = "<group>"; };
+		84C34CAA1DD489C7003332A8 /* CoreDataKeys.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataKeys.m; sourceTree = "<group>"; };
 		84C646C51DC8A3A600499C70 /* ContactsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsController.h; sourceTree = "<group>"; };
 		84C646C61DC8A3A600499C70 /* ContactsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsController.m; sourceTree = "<group>"; };
 		84C646C81DC8A43F00499C70 /* HistoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryController.h; sourceTree = "<group>"; };
@@ -88,6 +94,10 @@
 				8419C6101DC7E93300ECE223 /* Info.plist */,
 				8419C5FF1DC7E93300ECE223 /* Supporting Files */,
 				84CCE7401DD317EF0002BDEE /* DataModel.xcdatamodeld */,
+				84C34CA61DD488E7003332A8 /* SegueNames.h */,
+				84C34CA71DD488E7003332A8 /* SegueNames.m */,
+				84C34CA91DD489C7003332A8 /* CoreDataKeys.h */,
+				84C34CAA1DD489C7003332A8 /* CoreDataKeys.m */,
 			);
 			path = contacts;
 			sourceTree = "<group>";
@@ -203,9 +213,11 @@
 				84CCE7421DD317EF0002BDEE /* DataModel.xcdatamodeld in Sources */,
 				84C34C9B1DD47F1D003332A8 /* Contact.m in Sources */,
 				84C646CA1DC8A43F00499C70 /* HistoryController.m in Sources */,
+				84C34CAB1DD489C7003332A8 /* CoreDataKeys.m in Sources */,
 				84C34C9A1DD47F1D003332A8 /* Call.m in Sources */,
 				8419C6071DC7E93300ECE223 /* ContactInfoController.m in Sources */,
 				8419C6041DC7E93300ECE223 /* AppDelegate.m in Sources */,
+				84C34CA81DD488E7003332A8 /* SegueNames.m in Sources */,
 				84C205BC1DC9EC5C000A4440 /* DataStorage.m in Sources */,
 				84C646C71DC8A3A600499C70 /* ContactsController.m in Sources */,
 				8419C6011DC7E93300ECE223 /* main.m in Sources */,

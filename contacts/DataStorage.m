@@ -9,11 +9,13 @@
 #import <Foundation/Foundation.h>
 
 #import "DataStorage.h"
+#import "CoreDataKeys.h"
 
 @interface DataStorage()
 
 @property (strong) NSMutableArray* contacts;
 @property (strong) NSMutableArray* calls;
+@property (strong) NSPersistentContainer* persistentContainer;
 
 @end
 
@@ -21,7 +23,34 @@
 
 - (DataStorage*) initWithPersistentContainer:(NSPersistentContainer*)container {
     if ( self = [super init] ) {
-        _contacts = [[NSMutableArray alloc] init];
+        _persistentContainer = container;
+        
+        NSManagedObjectContext *context = _persistentContainer.viewContext;
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:CONTACT_ENTITY];
+        
+        NSError *error = nil;
+        NSArray *results = [context executeFetchRequest:request error:&error];
+        if (!results) {
+            NSLog(@"Error fetching Contact objects: %@\n%@", [error localizedDescription], [error userInfo]);
+            
+            _contacts = [[NSMutableArray alloc] init];
+        } else {
+            _contacts = [[NSMutableArray alloc] initWithCapacity:[results count] + 10];
+            
+            for (long i = 0, size = [results count]; i < size; i++){
+                NSManagedObject* contact = results[i];
+            
+            //for (NSManagedObject* contact in results) {
+                [_contacts addObject:[Contact initWith:i
+                                             firstName:[contact valueForKey:FIRST_NAME_KEY]
+                                              lastName:[contact valueForKey:LAST_NAME_KEY]
+                                                number:[contact valueForKey:NUMBER_KEY]]];
+                
+                //TODO: remove id from Contact
+                //TODO: create method like initWithManagedObject:(NSManagedObject*)contact
+            }
+        }
+        
         _calls = [[NSMutableArray alloc] init];
         
         return self;
@@ -37,6 +66,18 @@
 
 - (void) addContact:(Contact*)contact {
     assert(contact != nil);
+    
+    NSManagedObjectContext * context = _persistentContainer.viewContext;
+    NSManagedObject *coreDataContact = [NSEntityDescription insertNewObjectForEntityForName:CONTACT_ENTITY
+                                                                     inManagedObjectContext:context];
+    [coreDataContact setValue:contact.number forKey:NUMBER_KEY];
+    [coreDataContact setValue:contact.firstName forKey:FIRST_NAME_KEY];
+    [coreDataContact setValue:contact.lastName forKey:LAST_NAME_KEY];
+    
+    NSError *error = nil;
+    if ([context save:&error] == NO) {
+        NSAssert(NO, @"Error saving context: %@\n%@", [error localizedDescription], [error userInfo]);
+    }
     
     [_contacts addObject:contact];
 }
