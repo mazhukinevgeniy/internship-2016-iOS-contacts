@@ -8,6 +8,7 @@
 
 #import "HistoryController.h"
 #import "ContactInfoController.h"
+#import "SegueNames.h"
 
 @interface HistoryController()
 
@@ -75,7 +76,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     [super prepareForSegue:segue sender:sender];
     
-    if ([segue.identifier isEqualToString:@"showContact"]) {
+    if ([segue.identifier isEqualToString:SHOW_CONTACT]) {
         ContactInfoController* contactInfoController = (ContactInfoController*)segue.destinationViewController;
         
         [contactInfoController useContact:[_storage getCall:[_tableView indexPathForSelectedRow].row].callTarget];
