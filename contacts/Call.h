@@ -7,14 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Contact.h"
+#import "CDContact.h"
 
 @interface Call : NSObject
 
-@property (strong, readonly) Contact * callTarget;
+@property (strong, readonly) CDContact * callTarget;
 @property (strong, readonly) NSDate * date;
+//TODO: check if strong references to nsManagedObjects are like normal strong references
 
-- (Call*) initWithTarget:(Contact*)target andDate:(NSDate*)date;
-+ (Call*) initWithTarget:(Contact*)target andDate:(NSDate*)date;
+- (Call*) initWithTarget:(CDContact*)target andDate:(NSDate*)date;
++ (Call*) initWithTarget:(CDContact*)target andDate:(NSDate*)date;
 
 @end

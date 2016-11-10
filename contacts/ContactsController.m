@@ -63,7 +63,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:cellIdentifier];
     }
     
-    Contact * contact = [_storage getContact:indexPath.row];
+    CDContact * contact = [_storage getContact:indexPath.row];
     
     [[cell textLabel] setText:[contact toString]];
     return cell;
@@ -86,7 +86,7 @@
     CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:_tableView];
     NSIndexPath* indexPath = [_tableView indexPathForRowAtPoint:buttonPosition];
     
-    Contact * contact = [_storage getContact:indexPath.row];
+    CDContact * contact = [_storage getContact:indexPath.row];
     
     UIAlertController* callAlert = [UIAlertController alertControllerWithTitle:@"Calling" message:[contact fullName] preferredStyle:UIAlertControllerStyleAlert];
     
@@ -106,11 +106,9 @@
         NSArray * numbers = @[@"89123", @"01", @"#101*", @"89654"];
         
         for (int i = 0; i < 4; i++) {
-            Contact * contact = [Contact initWithFirstName:names[i]
-                                                  lastName:lastNames[i]
-                                                    number:numbers[i]];
-            
-            [_storage addContact:contact];
+            [_storage addContactWithFirstName:names[i]
+                                     lastName:lastNames[i]
+                                       number:numbers[i]];
         }
         
         [_tableView reloadData];

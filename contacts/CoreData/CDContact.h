@@ -7,8 +7,16 @@
 //
 
 #import <CoreData/CoreData.h>
-#import "CDCall.h"
+
+@class CDCall;
 
 @interface CDContact : NSManagedObject
+
+@property (readonly, strong) NSString* firstName;
+@property (readonly, strong) NSString* lastName;
+@property (readonly, strong) NSString* number;
+
+-(NSString*) fullName;
+-(NSString*) toString;
 
 @end

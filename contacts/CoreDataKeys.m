@@ -10,6 +10,8 @@
 
 NSString* const CONTACT_ENTITY = @"Contact";
 
+NSString* const CONTACT_KEY = @"contact";
+NSString* const DATE_KEY = @"date";
 NSString* const FIRST_NAME_KEY = @"firstName";
 NSString* const LAST_NAME_KEY = @"lastName";
 NSString* const HIDDEN_KEY = @"hidden";

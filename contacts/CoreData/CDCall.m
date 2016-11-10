@@ -10,4 +10,7 @@
 
 @implementation CDCall
 
+@dynamic date;
+@dynamic contact;
+
 @end

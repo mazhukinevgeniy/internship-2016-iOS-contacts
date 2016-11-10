@@ -6,7 +6,6 @@
 //  Copyright © 2016 noname. All rights reserved.
 //
 
-#import "Contact.h"
 #import "Call.h"
 #import <CoreData/CoreData.h>
 
@@ -15,11 +14,13 @@
 - (DataStorage*) initWithPersistentContainer:(NSPersistentContainer*)container;
 + (DataStorage*) initWithPersistentContainer:(NSPersistentContainer*)container;
 
-- (void) addContact:(Contact*)contact;
+- (void) addContactWithFirstName:(NSString*)fName
+                        lastName:(NSString*)lName
+                          number:(NSString*)phoneNumber;
 - (void) addCall:(Call*)call;
 
 //must return actual contact if 0 <= position < getNumberOfContacts
-- (Contact*) getContact:(long)position;
+- (CDContact*) getContact:(long)position;
 - (long) getNumberOfContacts;
 
 //must return actual call if 0 <= position < getNumberOfCalls

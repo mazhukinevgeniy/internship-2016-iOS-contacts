@@ -15,7 +15,7 @@
 @implementation Call
 
 
-- (Call*) initWithTarget:(Contact*)target andDate:(NSDate*)date {
+- (Call*) initWithTarget:(CDContact*)target andDate:(NSDate*)date {
     if (self = [super init]) {
         _callTarget = target;
         _date = date;
@@ -25,7 +25,7 @@
     else
         return nil;
 }
-+ (Call*) initWithTarget:(Contact*)target andDate:(NSDate*)date {
++ (Call*) initWithTarget:(CDContact*)target andDate:(NSDate*)date {
     return [[Call alloc] initWithTarget:target andDate:date];
 }
 

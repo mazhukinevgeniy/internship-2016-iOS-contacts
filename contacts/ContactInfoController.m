@@ -7,14 +7,13 @@
 //
 
 #import "ContactInfoController.h"
-#import "Contact.h"
 
 @interface ContactInfoController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *numberLabel;
 
-@property (strong) Contact* contact;
+@property (weak) CDContact* contact;
 
 @end
 
@@ -32,7 +31,7 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 
--(void) useContact:(Contact*)contact {
+-(void) useContact:(CDContact*)contact {
     _contact = contact;
 }
 

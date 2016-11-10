@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Contact.h"
+#import "CDContact.h"
 
 @interface ContactInfoController : UIViewController
 
--(void) useContact:(Contact*)contact;
+-(void) useContact:(CDContact*)contact;
 
 @end
 

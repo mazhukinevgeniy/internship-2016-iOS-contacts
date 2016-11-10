@@ -8,12 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DataStorage.h"
+#import "CDContact.h"
 #import "CoreDataKeys.h"
+#import "DataStorage.h"
 
 @interface DataStorage()
 
-@property (strong) NSMutableArray* contacts;
+@property (strong) NSMutableArray* contacts; //TODO: get rid of this array
 @property (strong) NSMutableArray* calls;
 @property (strong) NSPersistentContainer* persistentContainer;
 
@@ -37,12 +38,10 @@
         } else {
             _contacts = [[NSMutableArray alloc] initWithCapacity:[results count] + 10];
             
-            for (NSManagedObject* contact in results) {
-                [_contacts addObject:[Contact initWithFirstName:[contact valueForKey:FIRST_NAME_KEY]
-                                                       lastName:[contact valueForKey:LAST_NAME_KEY]
-                                                         number:[contact valueForKey:NUMBER_KEY]]];
+            for (CDContact* contact in results) {
+                [_contacts addObject:contact];
                 
-                //TODO: create method like initWithManagedObject:(NSManagedObject*)contact
+                //TODO: create fetchedResultsControllers for calls and contacts
             }
         }
         
@@ -59,25 +58,31 @@
 
 #pragma mark - contacts
 
-- (void) addContact:(Contact*)contact {
-    assert(contact != nil);
+- (void) addContactWithFirstName:(NSString*)fName
+                        lastName:(NSString*)lName
+                          number:(NSString*)phoneNumber {
+    assert(fName != nil);
+    assert(lName != nil);
+    assert(phoneNumber != nil);
+    
+    //TODO: validate all parameters
     
     NSManagedObjectContext * context = _persistentContainer.viewContext;
-    NSManagedObject *coreDataContact = [NSEntityDescription insertNewObjectForEntityForName:CONTACT_ENTITY
-                                                                     inManagedObjectContext:context];
-    [coreDataContact setValue:contact.number forKey:NUMBER_KEY];
-    [coreDataContact setValue:contact.firstName forKey:FIRST_NAME_KEY];
-    [coreDataContact setValue:contact.lastName forKey:LAST_NAME_KEY];
+    CDContact *coreDataContact = [NSEntityDescription insertNewObjectForEntityForName:CONTACT_ENTITY
+                                                               inManagedObjectContext:context];
+    [coreDataContact setValue:phoneNumber forKey:NUMBER_KEY];
+    [coreDataContact setValue:fName forKey:FIRST_NAME_KEY];
+    [coreDataContact setValue:lName forKey:LAST_NAME_KEY];
     
     NSError *error = nil;
     if ([context save:&error] == NO) {
         NSAssert(NO, @"Error saving context: %@\n%@", [error localizedDescription], [error userInfo]);
     }
     
-    [_contacts addObject:contact];
+    [_contacts addObject:coreDataContact];
 }
 
-- (Contact*) getContact:(long)position {
+- (CDContact*) getContact:(long)position {
     assert(position >= 0);
     assert(position < [_contacts count]);
     

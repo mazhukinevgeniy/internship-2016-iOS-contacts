@@ -11,4 +11,7 @@
 
 @interface CDCall : NSManagedObject
 
+@property (readonly, strong) CDContact * contact;
+@property (readonly, strong) NSDate * date;
+
 @end

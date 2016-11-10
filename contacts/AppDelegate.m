@@ -74,6 +74,8 @@
                      */
                     NSLog(@"Unresolved error %@, %@", error, error.userInfo);
                     abort();
+                } else {
+                    _persistentContainer.viewContext.retainsRegisteredObjects = YES;
                 }
             }];
         }
