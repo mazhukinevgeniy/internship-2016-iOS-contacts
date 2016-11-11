@@ -39,6 +39,25 @@
     [self performSegueWithIdentifier:@"editContact" sender:sender];
 }
 
+- (IBAction)deleteButtonTouched:(id)sender {
+    UIAlertController* confirmationAlert = [UIAlertController alertControllerWithTitle:@"Confirmation" message:@"Are you sure?" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Cancel"
+                                                     style:UIAlertActionStyleDefault
+                                                   handler:^(UIAlertAction * action) {}];
+    
+    UIAlertAction* delete = [UIAlertAction actionWithTitle:@"Delete"
+                                                     style:UIAlertActionStyleDefault
+                                                   handler:^(UIAlertAction * action) {
+                                                       //TODO: ask dataStorage to delete contact
+                                                   }];
+    
+    [confirmationAlert addAction:cancel];
+    [confirmationAlert addAction:delete];
+    
+    [self presentViewController:confirmationAlert animated:YES completion:nil];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
