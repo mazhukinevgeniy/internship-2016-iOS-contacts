@@ -14,6 +14,7 @@
 @dynamic firstName;
 @dynamic lastName;
 @dynamic number;
+@dynamic calls;
 
 -(NSString*) fullName {
     if ([[self firstName] length] == 0)

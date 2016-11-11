@@ -76,6 +76,7 @@
     [coreDataContact setValue:phoneNumber forKey:NUMBER_KEY];
     [coreDataContact setValue:fName forKey:FIRST_NAME_KEY];
     [coreDataContact setValue:lName forKey:LAST_NAME_KEY];
+    [coreDataContact setValue:[NSNumber numberWithBool:NO] forKey:HIDDEN_KEY];
     
     [self saveContext:context];
     [self updateFetchers:_activeContactFetchers];
@@ -122,19 +123,37 @@
 
 - (NSFetchedResultsController*) generateFetchedResultsControllerForContacts {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:CONTACT_ENTITY];
+    
     NSSortDescriptor *lastNameSort = [NSSortDescriptor sortDescriptorWithKey:LAST_NAME_KEY ascending:YES];
     NSSortDescriptor *firstNameSort = [NSSortDescriptor sortDescriptorWithKey:FIRST_NAME_KEY ascending:YES];
     [request setSortDescriptors:@[lastNameSort, firstNameSort]];
+    
+    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"%K == %@", HIDDEN_KEY, [NSNumber numberWithBool:NO]];
+    [request setPredicate:predicate];
     
     return [self generateFRCWithRequest:request andCacheName:@"contactsCache" andAddItTo:_activeContactFetchers];
 }
 
 - (NSFetchedResultsController*) generateFetchedResultsControllerForCalls {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:CALL_ENTITY];
+    
     NSSortDescriptor *dateSort = [NSSortDescriptor sortDescriptorWithKey:DATE_KEY ascending:NO];
     [request setSortDescriptors:@[dateSort]];
     
     return [self generateFRCWithRequest:request andCacheName:@"callsCache" andAddItTo:_activeCallFetchers];
+}
+
+- (void) tryToDeleteContact:(CDContact*)contact {
+    NSManagedObjectContext * context = _persistentContainer.viewContext;
+    
+    if ([contact.calls count] == 0) {
+        [context deleteObject:contact];
+    } else {
+        [contact setValue:[NSNumber numberWithBool:YES] forKey:HIDDEN_KEY];
+    }
+    
+    [self saveContext:context];
+    [self updateFetchers:_activeContactFetchers];
 }
 
 @end

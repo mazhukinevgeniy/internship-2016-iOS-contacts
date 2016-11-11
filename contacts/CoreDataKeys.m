@@ -11,6 +11,7 @@
 NSString* const CALL_ENTITY = @"Call";
 NSString* const CONTACT_ENTITY = @"Contact";
 
+NSString* const CALLS_KEY = @"calls";
 NSString* const CONTACT_KEY = @"contact";
 NSString* const DATE_KEY = @"date";
 NSString* const FIRST_NAME_KEY = @"firstName";

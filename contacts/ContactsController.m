@@ -72,7 +72,7 @@
     if ([segue.identifier isEqualToString:SHOW_CONTACT]) {
         ContactInfoController* contactInfoController = (ContactInfoController*)segue.destinationViewController;
         
-        [contactInfoController useContact:[_fetchedDataSource dataAtIndexPath:[_tableView indexPathForSelectedRow]]];
+        [contactInfoController useContact:[_fetchedDataSource dataAtIndexPath:[_tableView indexPathForSelectedRow]] withContactRemover:_storage];
     }
 }
 

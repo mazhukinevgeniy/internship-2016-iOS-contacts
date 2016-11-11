@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *numberLabel;
 
 @property (weak) CDContact* contact;
+@property (weak) NSObject<CanDeleteContact>* contactRemover;
 
 @end
 
@@ -31,8 +32,9 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 
--(void) useContact:(CDContact*)contact {
+-(void) useContact:(CDContact*)contact withContactRemover:(NSObject<CanDeleteContact>*)remover {
     _contact = contact;
+    _contactRemover = remover;
 }
 
 - (IBAction)editButtonTouched:(id)sender {
@@ -46,11 +48,13 @@
                                                      style:UIAlertActionStyleDefault
                                                    handler:^(UIAlertAction * action) {}];
     
-    UIAlertAction* delete = [UIAlertAction actionWithTitle:@"Delete"
-                                                     style:UIAlertActionStyleDefault
-                                                   handler:^(UIAlertAction * action) {
-                                                       //TODO: ask dataStorage to delete contact
-                                                   }];
+    UIAlertAction* delete =
+        [UIAlertAction actionWithTitle:@"Delete"
+                                 style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction * action) {
+                                   [_contactRemover tryToDeleteContact:_contact];
+                                   [[self navigationController] popViewControllerAnimated:YES];
+                               }];
     
     [confirmationAlert addAction:cancel];
     [confirmationAlert addAction:delete];

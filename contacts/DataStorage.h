@@ -8,9 +8,11 @@
 
 #import "CDCall.h"
 #import "CDContact.h"
+#import "DataStorageProtocols.h"
+
 #import <CoreData/CoreData.h>
 
-@interface DataStorage : NSObject
+@interface DataStorage : NSObject<CanDeleteContact>
 
 - (DataStorage*) initWithPersistentContainer:(NSPersistentContainer*)container;
 + (DataStorage*) initWithPersistentContainer:(NSPersistentContainer*)container;

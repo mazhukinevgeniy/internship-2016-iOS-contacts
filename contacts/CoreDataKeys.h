@@ -11,6 +11,7 @@
 extern NSString* const CALL_ENTITY;
 extern NSString* const CONTACT_ENTITY;
 
+extern NSString* const CALLS_KEY;
 extern NSString* const CONTACT_KEY;
 extern NSString* const DATE_KEY;
 extern NSString* const FIRST_NAME_KEY;

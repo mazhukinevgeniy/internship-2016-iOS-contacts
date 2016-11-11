@@ -6,7 +6,7 @@
     </entity>
     <entity name="Contact" representedClassName="CDContact" syncable="YES" codeGenerationType="category">
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="hidden" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="hidden" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="number" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="calls" optional="YES" toMany="YES" deletionRule="Deny" destinationEntity="Call" inverseName="contact" inverseEntity="Call" syncable="YES"/>

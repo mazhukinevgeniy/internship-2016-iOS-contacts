@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "CDContact.h"
+#import "DataStorageProtocols.h"
 
 @interface ContactInfoController : UIViewController
 
--(void) useContact:(CDContact*)contact;
+-(void) useContact:(CDContact*)contact withContactRemover:(NSObject<CanDeleteContact>*)remover;
 
 @end
 

@@ -38,6 +38,7 @@
 		8419C6101DC7E93300ECE223 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8462F7761DD5B5C300F172B5 /* FetchedDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchedDataSource.h; sourceTree = "<group>"; };
 		8462F7771DD5B5C300F172B5 /* FetchedDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchedDataSource.m; sourceTree = "<group>"; };
+		8463B7E71DD5D97400AB33EB /* DataStorageProtocols.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataStorageProtocols.h; sourceTree = "<group>"; };
 		846A63001DD4F68200275925 /* CDContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDContact.h; path = CoreData/CDContact.h; sourceTree = "<group>"; };
 		846A63011DD4F68200275925 /* CDContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDContact.m; path = CoreData/CDContact.m; sourceTree = "<group>"; };
 		846A63031DD4F69D00275925 /* CDCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDCall.h; path = CoreData/CDCall.h; sourceTree = "<group>"; };
@@ -139,6 +140,7 @@
 				846A63011DD4F68200275925 /* CDContact.m */,
 				846A63031DD4F69D00275925 /* CDCall.h */,
 				846A63041DD4F69D00275925 /* CDCall.m */,
+				8463B7E71DD5D97400AB33EB /* DataStorageProtocols.h */,
 			);
 			name = model;
 			sourceTree = "<group>";
