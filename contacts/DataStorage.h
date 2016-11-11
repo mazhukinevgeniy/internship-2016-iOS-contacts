@@ -6,7 +6,8 @@
 //  Copyright © 2016 noname. All rights reserved.
 //
 
-#import "Call.h"
+#import "CDCall.h"
+#import "CDContact.h"
 #import <CoreData/CoreData.h>
 
 @interface DataStorage : NSObject
@@ -17,13 +18,11 @@
 - (void) addContactWithFirstName:(NSString*)fName
                         lastName:(NSString*)lName
                           number:(NSString*)phoneNumber;
-- (void) addCall:(Call*)call;
+- (void) addCallWithDate:(NSDate*)date
+               andTarget:(CDContact*)contact;
 
 - (NSFetchedResultsController*) generateFetchedResultsControllerForContacts;
-
-//must return actual call if 0 <= position < getNumberOfCalls
-- (Call*) getCall:(long)position;
-- (NSInteger) getNumberOfCalls;
+- (NSFetchedResultsController*) generateFetchedResultsControllerForCalls;
 
 @end
 

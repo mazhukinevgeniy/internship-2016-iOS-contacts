@@ -8,6 +8,7 @@
 
 #import "CoreDataKeys.h"
 
+NSString* const CALL_ENTITY = @"Call";
 NSString* const CONTACT_ENTITY = @"Contact";
 
 NSString* const CONTACT_KEY = @"contact";

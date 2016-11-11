@@ -18,7 +18,6 @@
 		846A63051DD4F69D00275925 /* CDCall.m in Sources */ = {isa = PBXBuildFile; fileRef = 846A63041DD4F69D00275925 /* CDCall.m */; };
 		84C205B91DC9E676000A4440 /* PrimaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C205B81DC9E676000A4440 /* PrimaryViewController.m */; };
 		84C205BC1DC9EC5C000A4440 /* DataStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C205BB1DC9EC5C000A4440 /* DataStorage.m */; };
-		84C34C9A1DD47F1D003332A8 /* Call.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C34C971DD47F1D003332A8 /* Call.m */; };
 		84C34CA81DD488E7003332A8 /* SegueNames.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C34CA71DD488E7003332A8 /* SegueNames.m */; };
 		84C34CAB1DD489C7003332A8 /* CoreDataKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C34CAA1DD489C7003332A8 /* CoreDataKeys.m */; };
 		84C646C71DC8A3A600499C70 /* ContactsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C646C61DC8A3A600499C70 /* ContactsController.m */; };
@@ -47,8 +46,6 @@
 		84C205B81DC9E676000A4440 /* PrimaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrimaryViewController.m; sourceTree = "<group>"; };
 		84C205BA1DC9EA52000A4440 /* DataStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataStorage.h; sourceTree = "<group>"; };
 		84C205BB1DC9EC5C000A4440 /* DataStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataStorage.m; sourceTree = "<group>"; };
-		84C34C961DD47F1C003332A8 /* Call.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Call.h; sourceTree = "<group>"; };
-		84C34C971DD47F1D003332A8 /* Call.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Call.m; sourceTree = "<group>"; };
 		84C34CA61DD488E7003332A8 /* SegueNames.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegueNames.h; sourceTree = "<group>"; };
 		84C34CA71DD488E7003332A8 /* SegueNames.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegueNames.m; sourceTree = "<group>"; };
 		84C34CA91DD489C7003332A8 /* CoreDataKeys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataKeys.h; sourceTree = "<group>"; };
@@ -136,8 +133,6 @@
 		84C70D5D1DCB5A06002D03AB /* model */ = {
 			isa = PBXGroup;
 			children = (
-				84C34C961DD47F1C003332A8 /* Call.h */,
-				84C34C971DD47F1D003332A8 /* Call.m */,
 				84C205BA1DC9EA52000A4440 /* DataStorage.h */,
 				84C205BB1DC9EC5C000A4440 /* DataStorage.m */,
 				846A63001DD4F68200275925 /* CDContact.h */,
@@ -224,7 +219,6 @@
 				8462F7781DD5B5C300F172B5 /* FetchedDataSource.m in Sources */,
 				84C646CA1DC8A43F00499C70 /* HistoryController.m in Sources */,
 				84C34CAB1DD489C7003332A8 /* CoreDataKeys.m in Sources */,
-				84C34C9A1DD47F1D003332A8 /* Call.m in Sources */,
 				8419C6071DC7E93300ECE223 /* ContactInfoController.m in Sources */,
 				8419C6041DC7E93300ECE223 /* AppDelegate.m in Sources */,
 				846A63051DD4F69D00275925 /* CDCall.m in Sources */,

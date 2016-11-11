@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString* const CALL_ENTITY;
 extern NSString* const CONTACT_ENTITY;
 
 extern NSString* const CONTACT_KEY;

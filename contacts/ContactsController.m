@@ -88,7 +88,7 @@
     UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"End call"
             style:UIAlertActionStyleDefault
             handler:^(UIAlertAction * action) {
-                [_storage addCall:[Call initWithTarget:contact andDate:[NSDate date]]];
+                [_storage addCallWithDate:[NSDate date] andTarget:contact];
             }];
     
     [callAlert addAction:defaultAction];

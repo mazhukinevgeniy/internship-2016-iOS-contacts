@@ -13,6 +13,7 @@
 @interface HistoryController()
 
 @property (strong) DataStorage* storage;
+@property (strong) FetchedDataSource * fetchedDataSource;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
@@ -29,10 +30,9 @@
     
     assert(_tableView != nil);
     
-    if (_tableView.delegate == nil)
-    {
+    if (_tableView.dataSource == nil) {
         _tableView.delegate = self;
-        _tableView.dataSource = self;
+        _tableView.dataSource = _fetchedDataSource;
     }
     
     [_tableView reloadData];
@@ -40,17 +40,12 @@
 
 - (void)useDataStorage:(DataStorage*)storage {
     _storage = storage;
+    
+    _fetchedDataSource = [FetchedDataSource initWithFetchedResultsController:[storage generateFetchedResultsControllerForCalls]
+                                                              andCellCreator:self];
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [_storage getNumberOfCalls];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *) createCellWithData:(NSManagedObject*)managedObject forTableView:(UITableView*)tableView {
     NSString * cellIdentifier = @"callViewCell";
     
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
@@ -59,14 +54,14 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:cellIdentifier];
     }
     
-    Call * call = [_storage getCall:indexPath.row];
+    CDCall * call = (CDCall*)managedObject;
     
     NSString *dateString = [NSDateFormatter localizedStringFromDate:call.date
-                            dateStyle:NSDateFormatterShortStyle
-                            timeStyle:NSDateFormatterShortStyle];
+                                                          dateStyle:NSDateFormatterShortStyle
+                                                          timeStyle:NSDateFormatterShortStyle];
     
     [[cell textLabel] setText:[NSString stringWithFormat:@"%@ %@",
-                               dateString, [call.callTarget fullName]]];
+                               dateString, [call.contact fullName]]];
     //TODO: make info more visible, it doesn't fit
     return cell;
 }
@@ -79,7 +74,9 @@
     if ([segue.identifier isEqualToString:SHOW_CONTACT]) {
         ContactInfoController* contactInfoController = (ContactInfoController*)segue.destinationViewController;
         
-        [contactInfoController useContact:[_storage getCall:[_tableView indexPathForSelectedRow].row].callTarget];
+        CDCall * call = [_fetchedDataSource dataAtIndexPath:[_tableView indexPathForSelectedRow]];
+        
+        [contactInfoController useContact:call.contact];
     }
 }
 

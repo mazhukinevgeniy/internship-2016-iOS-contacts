@@ -14,10 +14,15 @@
 
 @interface DataStorage()
 
-@property (strong) NSMutableArray* calls;
 @property (strong) NSPersistentContainer* persistentContainer;
 
 @property (strong) NSMutableArray * activeContactFetchers;
+@property (strong) NSMutableArray * activeCallFetchers;
+
+- (void) updateFetchers:(NSMutableArray*)fetchers;
+- (void) saveContext:(NSManagedObjectContext*)context;
+
+- (NSFetchedResultsController*) generateFRCWithRequest:(NSFetchRequest*)request andCacheName:(NSString*)cacheName andAddItTo:(NSMutableArray*)array;
 
 @end
 
@@ -26,9 +31,9 @@
 - (DataStorage*) initWithPersistentContainer:(NSPersistentContainer*)container {
     if ( self = [super init] ) {
         _persistentContainer = container;
-        _activeContactFetchers = [[NSMutableArray alloc] init];
         
-        _calls = [[NSMutableArray alloc] init];
+        _activeContactFetchers = [[NSMutableArray alloc] init];
+        _activeCallFetchers = [[NSMutableArray alloc] init];
         
         return self;
     }
@@ -39,7 +44,22 @@
     return [[DataStorage alloc] initWithPersistentContainer:container];
 }
 
-#pragma mark - contacts
+
+- (void) saveContext:(NSManagedObjectContext*)context {
+    NSError *error = nil;
+    if (![context save:&error]) {
+        NSAssert(NO, @"Error saving context: %@\n%@", [error localizedDescription], [error userInfo]);
+    }
+}
+
+- (void) updateFetchers:(NSMutableArray*)fetchers {
+    NSError * error = nil;
+    for (NSFetchedResultsController * frc in fetchers) {
+        if (![frc performFetch:&error]) {
+            NSLog(@"Fetched results controller can't fetch: %@\n%@", [error localizedDescription], [error userInfo]);
+        }
+    }
+}
 
 - (void) addContactWithFirstName:(NSString*)fName
                         lastName:(NSString*)lName
@@ -57,60 +77,64 @@
     [coreDataContact setValue:fName forKey:FIRST_NAME_KEY];
     [coreDataContact setValue:lName forKey:LAST_NAME_KEY];
     
+    [self saveContext:context];
+    [self updateFetchers:_activeContactFetchers];
+}
+
+- (void) addCallWithDate:(NSDate*)date
+               andTarget:(CDContact*)contact {
+    assert(date != nil);
+    assert(contact != nil);
+    
+    //TODO: validate all parameters
+    
+    NSManagedObjectContext * context = _persistentContainer.viewContext;
+    CDCall *coreDataCall = [NSEntityDescription insertNewObjectForEntityForName:CALL_ENTITY
+                                                         inManagedObjectContext:context];
+    [coreDataCall setValue:date forKey:DATE_KEY];
+    [coreDataCall setValue:contact forKey:CONTACT_KEY];
+    
+    [self saveContext:context];
+    [self updateFetchers:_activeCallFetchers];
+}
+
+
+- (NSFetchedResultsController*) generateFRCWithRequest:(NSFetchRequest*)request
+                                          andCacheName:(NSString*)cacheName
+                                            andAddItTo:(NSMutableArray*)array{
+    NSManagedObjectContext *context = _persistentContainer.viewContext;
+    
+    NSFetchedResultsController * fetchedResults = [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                                                                      managedObjectContext:context
+                                                                                        sectionNameKeyPath:nil
+                                                                                                 cacheName:cacheName];
+    //TODO: check if it'll work correctly if cache name is the same
+    
     NSError *error = nil;
-    if (![context save:&error]) {
-        NSAssert(NO, @"Error saving context: %@\n%@", [error localizedDescription], [error userInfo]);
+    if (![fetchedResults performFetch:&error]) {
+        NSLog(@"Failed to initialize FetchedResultsController: %@\n%@", [error localizedDescription], [error userInfo]);
+        abort();
     } else {
-        for (NSFetchedResultsController * frc in _activeContactFetchers) {
-            if (![frc performFetch:&error]) {
-                NSLog(@"Some fetched results controller can't fetch: %@\n%@", [error localizedDescription], [error userInfo]);
-            }
-        }
+        [array addObject:fetchedResults];
+        return fetchedResults;
     }
 }
 
 - (NSFetchedResultsController*) generateFetchedResultsControllerForContacts {
-    NSManagedObjectContext *context = _persistentContainer.viewContext;
-    
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:CONTACT_ENTITY];
     NSSortDescriptor *lastNameSort = [NSSortDescriptor sortDescriptorWithKey:LAST_NAME_KEY ascending:YES];
     NSSortDescriptor *firstNameSort = [NSSortDescriptor sortDescriptorWithKey:FIRST_NAME_KEY ascending:YES];
     [request setSortDescriptors:@[lastNameSort, firstNameSort]];
     
-    NSFetchedResultsController * fetchedContacts = [[NSFetchedResultsController alloc] initWithFetchRequest:request
-                                                                                       managedObjectContext:context
-                                                                                         sectionNameKeyPath:nil
-                                                                                                  cacheName:@"contactsCache"];
-    //TODO: check if it'll work correctly if cache name is the same
-    
-    NSError *error = nil;
-    if (![fetchedContacts performFetch:&error]) {
-        NSLog(@"Failed to initialize FetchedResultsController for contacts: %@\n%@", [error localizedDescription], [error userInfo]);
-        abort();
-    } else {
-        [_activeContactFetchers addObject:fetchedContacts];
-    }
-    
-    return fetchedContacts;
+    return [self generateFRCWithRequest:request andCacheName:@"contactsCache" andAddItTo:_activeContactFetchers];
 }
 
-#pragma mark - calls
-
-- (void) addCall:(Call *)call {
-    assert(call != nil);
+- (NSFetchedResultsController*) generateFetchedResultsControllerForCalls {
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:CALL_ENTITY];
+    NSSortDescriptor *dateSort = [NSSortDescriptor sortDescriptorWithKey:DATE_KEY ascending:NO];
+    [request setSortDescriptors:@[dateSort]];
     
-    [_calls addObject:call];
-}
-
-- (Call*) getCall:(long)position {
-    assert(position >= 0);
-    assert(position < [_calls count]);
-    
-    return _calls[position];
-}
-
-- (NSInteger) getNumberOfCalls {
-    return [_calls count];
+    return [self generateFRCWithRequest:request andCacheName:@"callsCache" andAddItTo:_activeCallFetchers];
 }
 
 @end

@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "DataStorage.h"
+#import "FetchedDataSource.h"
 
-@interface HistoryController : UIViewController<DataStorageUser, UITableViewDelegate, UITableViewDataSource>
+@interface HistoryController : UIViewController<DataStorageUser, UITableViewDelegate, CellCreator>
 
 @end
