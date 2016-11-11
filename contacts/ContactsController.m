@@ -12,7 +12,8 @@
 
 @interface ContactsController()
 
-@property (strong) DataStorage* storage;
+@property (strong) DataStorage * storage;
+@property (strong) FetchedDataSource * fetchedDataSource;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
@@ -30,10 +31,9 @@
     
     assert(_tableView != nil);
     
-    if (_tableView.delegate == nil)
-    {
+    if (_tableView.dataSource == nil) {
         _tableView.delegate = self;
-        _tableView.dataSource = self;
+        _tableView.dataSource = _fetchedDataSource;
     }
     
     [_tableView reloadData];
@@ -44,17 +44,12 @@
 
 - (void)useDataStorage:(DataStorage*)storage {
     _storage = storage;
+    
+    _fetchedDataSource = [FetchedDataSource initWithFetchedResultsController:[storage generateFetchedResultsControllerForContacts]
+                                                              andCellCreator:self];
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [_storage numberOfContactSections];
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [_storage numberOfContactsInSection:section];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell*) createCellWithData:(NSManagedObject*)managedObject forTableView:(UITableView*)tableView {
     NSString * cellIdentifier = @"contactViewCell";
     
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
@@ -63,7 +58,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:cellIdentifier];
     }
     
-    CDContact * contact = [_storage contactAtIndexPath:indexPath];
+    CDContact * contact = (CDContact*) managedObject;
     
     [[cell textLabel] setText:[contact toString]];
     return cell;
@@ -77,7 +72,7 @@
     if ([segue.identifier isEqualToString:SHOW_CONTACT]) {
         ContactInfoController* contactInfoController = (ContactInfoController*)segue.destinationViewController;
         
-        [contactInfoController useContact:[_storage contactAtIndexPath:[_tableView indexPathForSelectedRow]]];
+        [contactInfoController useContact:[_fetchedDataSource dataAtIndexPath:[_tableView indexPathForSelectedRow]]];
     }
 }
 
@@ -86,7 +81,7 @@
     CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:_tableView];
     NSIndexPath* indexPath = [_tableView indexPathForRowAtPoint:buttonPosition];
     
-    CDContact * contact = [_storage contactAtIndexPath:indexPath];
+    CDContact * contact = [_fetchedDataSource dataAtIndexPath:indexPath];
     
     UIAlertController* callAlert = [UIAlertController alertControllerWithTitle:@"Calling" message:[contact fullName] preferredStyle:UIAlertControllerStyleAlert];
     

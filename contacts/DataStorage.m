@@ -17,7 +17,7 @@
 @property (strong) NSMutableArray* calls;
 @property (strong) NSPersistentContainer* persistentContainer;
 
-@property (strong) NSFetchedResultsController * fetchedContacts;
+@property (strong) NSMutableArray * activeContactFetchers;
 
 @end
 
@@ -26,22 +26,7 @@
 - (DataStorage*) initWithPersistentContainer:(NSPersistentContainer*)container {
     if ( self = [super init] ) {
         _persistentContainer = container;
-        
-        NSManagedObjectContext *context = _persistentContainer.viewContext;
-        
-        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:CONTACT_ENTITY];
-        NSSortDescriptor *lastNameSort = [NSSortDescriptor sortDescriptorWithKey:LAST_NAME_KEY ascending:YES];
-        NSSortDescriptor *firstNameSort = [NSSortDescriptor sortDescriptorWithKey:FIRST_NAME_KEY ascending:YES];
-        [request setSortDescriptors:@[lastNameSort, firstNameSort]];
-        
-        _fetchedContacts = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:context sectionNameKeyPath:nil cacheName:@"contactsCache"];
-        //TODO: check who needs to be the delegate
-        
-        NSError *error = nil;
-        if (![_fetchedContacts performFetch:&error]) {
-            NSLog(@"Failed to initialize FetchedResultsController: %@\n%@", [error localizedDescription], [error userInfo]);
-            abort();
-        }
+        _activeContactFetchers = [[NSMutableArray alloc] init];
         
         _calls = [[NSMutableArray alloc] init];
         
@@ -75,22 +60,38 @@
     NSError *error = nil;
     if (![context save:&error]) {
         NSAssert(NO, @"Error saving context: %@\n%@", [error localizedDescription], [error userInfo]);
-    } else if (![_fetchedContacts performFetch:&error]) {
-        NSLog(@"Failed to fetch contacts: %@\n%@", [error localizedDescription], [error userInfo]);
+    } else {
+        for (NSFetchedResultsController * frc in _activeContactFetchers) {
+            if (![frc performFetch:&error]) {
+                NSLog(@"Some fetched results controller can't fetch: %@\n%@", [error localizedDescription], [error userInfo]);
+            }
+        }
     }
 }
 
-- (NSInteger) numberOfContactSections {
-    return [[_fetchedContacts sections] count];
-}
-
-- (NSInteger) numberOfContactsInSection:(NSInteger)section {
-    id<NSFetchedResultsSectionInfo> sectionInfo = [_fetchedContacts sections][section];
-    return [sectionInfo numberOfObjects];
-}
-
-- (CDContact*) contactAtIndexPath:(NSIndexPath*)indexPath {
-    return [_fetchedContacts objectAtIndexPath:indexPath];
+- (NSFetchedResultsController*) generateFetchedResultsControllerForContacts {
+    NSManagedObjectContext *context = _persistentContainer.viewContext;
+    
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:CONTACT_ENTITY];
+    NSSortDescriptor *lastNameSort = [NSSortDescriptor sortDescriptorWithKey:LAST_NAME_KEY ascending:YES];
+    NSSortDescriptor *firstNameSort = [NSSortDescriptor sortDescriptorWithKey:FIRST_NAME_KEY ascending:YES];
+    [request setSortDescriptors:@[lastNameSort, firstNameSort]];
+    
+    NSFetchedResultsController * fetchedContacts = [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                                                                       managedObjectContext:context
+                                                                                         sectionNameKeyPath:nil
+                                                                                                  cacheName:@"contactsCache"];
+    //TODO: check if it'll work correctly if cache name is the same
+    
+    NSError *error = nil;
+    if (![fetchedContacts performFetch:&error]) {
+        NSLog(@"Failed to initialize FetchedResultsController for contacts: %@\n%@", [error localizedDescription], [error userInfo]);
+        abort();
+    } else {
+        [_activeContactFetchers addObject:fetchedContacts];
+    }
+    
+    return fetchedContacts;
 }
 
 #pragma mark - calls

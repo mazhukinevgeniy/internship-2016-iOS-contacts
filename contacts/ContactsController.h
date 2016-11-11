@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <UIKit/UITableView.h>
 #import "DataStorage.h"
+#import "FetchedDataSource.h"
 
-@interface ContactsController : UIViewController<DataStorageUser, UITableViewDelegate, UITableViewDataSource>
+@interface ContactsController : UIViewController<DataStorageUser, UITableViewDelegate, CellCreator>
 
 @end

@@ -13,6 +13,7 @@
 		8419C60A1DC7E93300ECE223 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8419C6081DC7E93300ECE223 /* Main.storyboard */; };
 		8419C60C1DC7E93300ECE223 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8419C60B1DC7E93300ECE223 /* Assets.xcassets */; };
 		8419C60F1DC7E93300ECE223 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8419C60D1DC7E93300ECE223 /* LaunchScreen.storyboard */; };
+		8462F7781DD5B5C300F172B5 /* FetchedDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 8462F7771DD5B5C300F172B5 /* FetchedDataSource.m */; };
 		846A63021DD4F68200275925 /* CDContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 846A63011DD4F68200275925 /* CDContact.m */; };
 		846A63051DD4F69D00275925 /* CDCall.m in Sources */ = {isa = PBXBuildFile; fileRef = 846A63041DD4F69D00275925 /* CDCall.m */; };
 		84C205B91DC9E676000A4440 /* PrimaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C205B81DC9E676000A4440 /* PrimaryViewController.m */; };
@@ -36,6 +37,8 @@
 		8419C60B1DC7E93300ECE223 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8419C60E1DC7E93300ECE223 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8419C6101DC7E93300ECE223 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8462F7761DD5B5C300F172B5 /* FetchedDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FetchedDataSource.h; sourceTree = "<group>"; };
+		8462F7771DD5B5C300F172B5 /* FetchedDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FetchedDataSource.m; sourceTree = "<group>"; };
 		846A63001DD4F68200275925 /* CDContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDContact.h; path = CoreData/CDContact.h; sourceTree = "<group>"; };
 		846A63011DD4F68200275925 /* CDContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDContact.m; path = CoreData/CDContact.m; sourceTree = "<group>"; };
 		846A63031DD4F69D00275925 /* CDCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDCall.h; path = CoreData/CDCall.h; sourceTree = "<group>"; };
@@ -124,6 +127,8 @@
 				84C646C91DC8A43F00499C70 /* HistoryController.m */,
 				84C205B71DC9E676000A4440 /* PrimaryViewController.h */,
 				84C205B81DC9E676000A4440 /* PrimaryViewController.m */,
+				8462F7761DD5B5C300F172B5 /* FetchedDataSource.h */,
+				8462F7771DD5B5C300F172B5 /* FetchedDataSource.m */,
 			);
 			name = viewControllers;
 			sourceTree = "<group>";
@@ -216,6 +221,7 @@
 			files = (
 				84C205B91DC9E676000A4440 /* PrimaryViewController.m in Sources */,
 				84CCE7421DD317EF0002BDEE /* DataModel.xcdatamodeld in Sources */,
+				8462F7781DD5B5C300F172B5 /* FetchedDataSource.m in Sources */,
 				84C646CA1DC8A43F00499C70 /* HistoryController.m in Sources */,
 				84C34CAB1DD489C7003332A8 /* CoreDataKeys.m in Sources */,
 				84C34C9A1DD47F1D003332A8 /* Call.m in Sources */,

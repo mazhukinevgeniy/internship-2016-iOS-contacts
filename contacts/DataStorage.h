@@ -19,9 +19,7 @@
                           number:(NSString*)phoneNumber;
 - (void) addCall:(Call*)call;
 
-- (NSInteger) numberOfContactSections;
-- (NSInteger) numberOfContactsInSection:(NSInteger)section;
-- (CDContact*) contactAtIndexPath:(NSIndexPath*)indexPath;
+- (NSFetchedResultsController*) generateFetchedResultsControllerForContacts;
 
 //must return actual call if 0 <= position < getNumberOfCalls
 - (Call*) getCall:(long)position;
