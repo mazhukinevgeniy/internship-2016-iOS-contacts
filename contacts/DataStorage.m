@@ -14,9 +14,10 @@
 
 @interface DataStorage()
 
-@property (strong) NSMutableArray* contacts; //TODO: get rid of this array
 @property (strong) NSMutableArray* calls;
 @property (strong) NSPersistentContainer* persistentContainer;
+
+@property (strong) NSFetchedResultsController * fetchedContacts;
 
 @end
 
@@ -27,22 +28,19 @@
         _persistentContainer = container;
         
         NSManagedObjectContext *context = _persistentContainer.viewContext;
+        
         NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:CONTACT_ENTITY];
+        NSSortDescriptor *lastNameSort = [NSSortDescriptor sortDescriptorWithKey:LAST_NAME_KEY ascending:YES];
+        NSSortDescriptor *firstNameSort = [NSSortDescriptor sortDescriptorWithKey:FIRST_NAME_KEY ascending:YES];
+        [request setSortDescriptors:@[lastNameSort, firstNameSort]];
+        
+        _fetchedContacts = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:context sectionNameKeyPath:nil cacheName:@"contactsCache"];
+        //TODO: check who needs to be the delegate
         
         NSError *error = nil;
-        NSArray *results = [context executeFetchRequest:request error:&error];
-        if (!results) {
-            NSLog(@"Error fetching Contact objects: %@\n%@", [error localizedDescription], [error userInfo]);
-            
-            _contacts = [[NSMutableArray alloc] init];
-        } else {
-            _contacts = [[NSMutableArray alloc] initWithCapacity:[results count] + 10];
-            
-            for (CDContact* contact in results) {
-                [_contacts addObject:contact];
-                
-                //TODO: create fetchedResultsControllers for calls and contacts
-            }
+        if (![_fetchedContacts performFetch:&error]) {
+            NSLog(@"Failed to initialize FetchedResultsController: %@\n%@", [error localizedDescription], [error userInfo]);
+            abort();
         }
         
         _calls = [[NSMutableArray alloc] init];
@@ -75,22 +73,24 @@
     [coreDataContact setValue:lName forKey:LAST_NAME_KEY];
     
     NSError *error = nil;
-    if ([context save:&error] == NO) {
+    if (![context save:&error]) {
         NSAssert(NO, @"Error saving context: %@\n%@", [error localizedDescription], [error userInfo]);
+    } else if (![_fetchedContacts performFetch:&error]) {
+        NSLog(@"Failed to fetch contacts: %@\n%@", [error localizedDescription], [error userInfo]);
     }
-    
-    [_contacts addObject:coreDataContact];
 }
 
-- (CDContact*) getContact:(long)position {
-    assert(position >= 0);
-    assert(position < [_contacts count]);
-    
-    return _contacts[position];
+- (NSInteger) numberOfContactSections {
+    return [[_fetchedContacts sections] count];
 }
 
-- (long) getNumberOfContacts {
-    return [_contacts count];
+- (NSInteger) numberOfContactsInSection:(NSInteger)section {
+    id<NSFetchedResultsSectionInfo> sectionInfo = [_fetchedContacts sections][section];
+    return [sectionInfo numberOfObjects];
+}
+
+- (CDContact*) contactAtIndexPath:(NSIndexPath*)indexPath {
+    return [_fetchedContacts objectAtIndexPath:indexPath];
 }
 
 #pragma mark - calls
@@ -108,7 +108,7 @@
     return _calls[position];
 }
 
-- (long) getNumberOfCalls {
+- (NSInteger) getNumberOfCalls {
     return [_calls count];
 }
 

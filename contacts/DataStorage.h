@@ -19,13 +19,13 @@
                           number:(NSString*)phoneNumber;
 - (void) addCall:(Call*)call;
 
-//must return actual contact if 0 <= position < getNumberOfContacts
-- (CDContact*) getContact:(long)position;
-- (long) getNumberOfContacts;
+- (NSInteger) numberOfContactSections;
+- (NSInteger) numberOfContactsInSection:(NSInteger)section;
+- (CDContact*) contactAtIndexPath:(NSIndexPath*)indexPath;
 
 //must return actual call if 0 <= position < getNumberOfCalls
 - (Call*) getCall:(long)position;
-- (long) getNumberOfCalls;
+- (NSInteger) getNumberOfCalls;
 
 @end
 

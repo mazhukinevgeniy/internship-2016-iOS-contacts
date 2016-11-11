@@ -47,11 +47,11 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return [_storage numberOfContactSections];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [_storage getNumberOfContacts];
+    return [_storage numberOfContactsInSection:section];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -63,7 +63,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:cellIdentifier];
     }
     
-    CDContact * contact = [_storage getContact:indexPath.row];
+    CDContact * contact = [_storage contactAtIndexPath:indexPath];
     
     [[cell textLabel] setText:[contact toString]];
     return cell;
@@ -77,7 +77,7 @@
     if ([segue.identifier isEqualToString:SHOW_CONTACT]) {
         ContactInfoController* contactInfoController = (ContactInfoController*)segue.destinationViewController;
         
-        [contactInfoController useContact:[_storage getContact:[_tableView indexPathForSelectedRow].row]];
+        [contactInfoController useContact:[_storage contactAtIndexPath:[_tableView indexPathForSelectedRow]]];
     }
 }
 
@@ -86,7 +86,7 @@
     CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:_tableView];
     NSIndexPath* indexPath = [_tableView indexPathForRowAtPoint:buttonPosition];
     
-    CDContact * contact = [_storage getContact:indexPath.row];
+    CDContact * contact = [_storage contactAtIndexPath:indexPath];
     
     UIAlertController* callAlert = [UIAlertController alertControllerWithTitle:@"Calling" message:[contact fullName] preferredStyle:UIAlertControllerStyleAlert];
     
