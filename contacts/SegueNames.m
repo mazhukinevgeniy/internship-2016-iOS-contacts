@@ -8,4 +8,7 @@
 
 #import "SegueNames.h"
 
+
+NSString * const ADD_CONTACT = @"addContact";
+NSString * const EDIT_CONTACT = @"editContact";
 NSString * const SHOW_CONTACT = @"showContact";

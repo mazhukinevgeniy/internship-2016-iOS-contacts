@@ -8,4 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString * const ADD_CONTACT;
+extern NSString * const EDIT_CONTACT;
 extern NSString * const SHOW_CONTACT;

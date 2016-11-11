@@ -6,7 +6,9 @@
 //  Copyright © 2016 noname. All rights reserved.
 //
 
+#import "EditContactViewController.h"
 #import "ContactInfoController.h"
+#import "SegueNames.h"
 
 @interface ContactInfoController ()
 
@@ -37,8 +39,14 @@
     _contactRemover = remover;
 }
 
-- (IBAction)editButtonTouched:(id)sender {
-    [self performSegueWithIdentifier:@"editContact" sender:sender];
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    [super prepareForSegue:segue sender:sender];
+    
+    if ([[segue identifier] isEqualToString:EDIT_CONTACT]) {
+        EditContactViewController * controller = [segue destinationViewController];
+        
+        [controller setEditorWithContact:_contact];
+    }
 }
 
 - (IBAction)deleteButtonTouched:(id)sender {

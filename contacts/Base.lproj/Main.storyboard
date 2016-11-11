@@ -68,7 +68,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Edit"/>
                                 <connections>
-                                    <action selector="editButtonTouched:" destination="K6U-bR-1bJ" eventType="touchUpInside" id="mbK-Qx-8rZ"/>
+                                    <segue destination="hHz-EQ-5F6" kind="show" identifier="editContact" id="jy1-3i-mqL"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LLp-XI-KVM">
@@ -99,7 +99,6 @@
                     <connections>
                         <outlet property="nameLabel" destination="LLp-XI-KVM" id="P5g-wG-fjx"/>
                         <outlet property="numberLabel" destination="0Yj-2o-IBi" id="XFw-ih-PHn"/>
-                        <segue destination="hHz-EQ-5F6" kind="show" identifier="editContact" id="xgt-2y-oCE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ajZ-vM-jtd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -109,7 +108,7 @@
         <!--Edit contact-->
         <scene sceneID="md4-Ju-yWj">
             <objects>
-                <viewController title="Edit contact" id="hHz-EQ-5F6" sceneMemberID="viewController">
+                <viewController title="Edit contact" id="hHz-EQ-5F6" customClass="EditContactViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WXx-Y9-eDV"/>
                         <viewControllerLayoutGuide type="bottom" id="buU-Lx-XRM"/>
@@ -160,7 +159,7 @@
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="addButtonTouched:" destination="5ta-SX-5pt" eventType="touchUpInside" id="3aj-jt-RqX"/>
+                                    <segue destination="hHz-EQ-5F6" kind="show" identifier="addContact" id="Nta-hu-NHs"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="453-nJ-dUe">
@@ -215,7 +214,6 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="ab1-cU-5V2" id="sNh-sn-8ri"/>
-                        <segue destination="hHz-EQ-5F6" kind="show" identifier="addContact" id="iQ2-3B-eTq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LDr-Om-M40" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -243,7 +241,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="cRM-nX-EWz"/>
-        <segue reference="iQ2-3B-eTq"/>
+        <segue reference="gC1-FD-8Ni"/>
+        <segue reference="jy1-3i-mqL"/>
     </inferredMetricsTieBreakers>
 </document>

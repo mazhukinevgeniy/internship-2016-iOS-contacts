@@ -6,6 +6,7 @@
 //  Copyright © 2016 noname. All rights reserved.
 //
 
+#import "EditContactViewController.h"
 #import "ContactsController.h"
 #import "ContactInfoController.h"
 #import "SegueNames.h"
@@ -69,10 +70,16 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     [super prepareForSegue:segue sender:sender];
     
-    if ([segue.identifier isEqualToString:SHOW_CONTACT]) {
-        ContactInfoController* contactInfoController = (ContactInfoController*)segue.destinationViewController;
+    NSString * segueID = segue.identifier;
+    
+    if ([segueID isEqualToString:SHOW_CONTACT]) {
+        ContactInfoController * contactInfoController = [segue destinationViewController];
         
         [contactInfoController useContact:[_fetchedDataSource dataAtIndexPath:[_tableView indexPathForSelectedRow]] withContactRemover:_storage];
+    } else if ([segueID isEqualToString:ADD_CONTACT]) {
+        EditContactViewController * editController = [segue destinationViewController];
+        
+        [editController setEditorWithContact:nil];
     }
 }
 
@@ -94,6 +101,7 @@
     [callAlert addAction:defaultAction];
     [self presentViewController:callAlert animated:YES completion:nil];
 }
+
 - (IBAction)addDefaultButtonTouched:(id)sender {
     if (_storage != nil) {
         NSArray * names = @[@"Bob", @"", @"Disable roaming", @"Sara"];
@@ -108,10 +116,6 @@
         
         [_tableView reloadData];
     }
-}
-
-- (IBAction)addButtonTouched:(id)sender {
-    [self performSegueWithIdentifier:@"addContact" sender:sender];
 }
 
 - (void)didReceiveMemoryWarning {
