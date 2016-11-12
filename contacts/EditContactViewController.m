@@ -74,6 +74,7 @@
         [_contact setValue:fName forKey:FIRST_NAME_KEY];
         [_contact setValue:lName forKey:LAST_NAME_KEY];
         [_contact setValue:number forKey:NUMBER_KEY];
+        [_contact setValue:[NSNumber numberWithBool:NO] forKey:HIDDEN_KEY];
         
         [_contactManager saveChangesToContact:_contact];
     }
