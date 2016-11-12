@@ -14,6 +14,9 @@
 @interface PrimaryViewController()
 
 @property (strong) DataStorage * storage;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem * addContactButton;
+
+@property (strong) UIColor * defaultTintColor;
 
 @end
 
@@ -31,6 +34,8 @@
     for (NSObject<InitializedWithPrimaryVC>* controller in [self viewControllers]) {
         [controller useDataStorage:_storage andCallController:callController];
     }
+    
+    _defaultTintColor = _addContactButton.tintColor;
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -38,6 +43,19 @@
         EditContactViewController * editController = [segue destinationViewController];
         
         [editController setEditorWithContact:nil andContactManager:_storage];
+    }
+}
+
+- (void) tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
+    if ([item.title isEqualToString:@"Contacts"]) {
+        _addContactButton.enabled = YES;
+        _addContactButton.tintColor = _defaultTintColor;
+    } else if ([item.title isEqualToString:@"History"]) {
+        _addContactButton.enabled = NO;
+        _addContactButton.tintColor = [UIColor clearColor];
+    } else {
+        NSLog(@"Unexpected tab bar item: %@", item.title);
+        abort();
     }
 }
 

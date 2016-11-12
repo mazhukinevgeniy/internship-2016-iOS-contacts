@@ -56,7 +56,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="5HF-4U-X53"/>
+                    <tabBarItem key="tabBarItem" title="History" id="QSl-h4-w6x"/>
                     <connections>
                         <outlet property="tableView" destination="Bp4-Cf-zBh" id="lZ8-4u-7jd"/>
                     </connections>
@@ -278,9 +278,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="L5C-rB-aNl"/>
+                    <tabBarItem key="tabBarItem" title="Contacts" id="pMj-D4-rqE"/>
                     <toolbarItems/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="ab1-cU-5V2" id="sNh-sn-8ri"/>
                     </connections>
@@ -306,6 +306,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <outlet property="addContactButton" destination="3LM-vj-Ici" id="btp-ZQ-A19"/>
                         <segue destination="5ta-SX-5pt" kind="relationship" relationship="viewControllers" id="1Hg-Dn-j36"/>
                         <segue destination="3ss-fS-pws" kind="relationship" relationship="viewControllers" id="4RM-eS-qay"/>
                     </connections>
@@ -316,7 +317,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="jkJ-P2-78f"/>
         <segue reference="gC1-FD-8Ni"/>
-        <segue reference="jy1-3i-mqL"/>
     </inferredMetricsTieBreakers>
 </document>
