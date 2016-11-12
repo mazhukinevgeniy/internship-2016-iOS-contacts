@@ -79,7 +79,7 @@
         ContactInfoController * contactInfoController = [segue destinationViewController];
         CDContact * contact = [_fetchedDataSource dataAtIndexPath:[_tableView indexPathForSelectedRow]];
         
-        [contactInfoController useContact:contact withContactManager:_storage];
+        [contactInfoController useContact:contact contactManager:_storage andCallController:_callController];
     } else if ([segueID isEqualToString:ADD_CONTACT]) {
         EditContactViewController * editController = [segue destinationViewController];
         

@@ -33,19 +33,19 @@
 - (UIAlertController*) getCallAlertForContact:(CDContact*)contact {
     NSString * title = [NSString stringWithFormat:@"Calling %@", [contact fullName]];
     
-    UIAlertController* callAlert =
+    UIAlertController * callAlert =
         [UIAlertController alertControllerWithTitle:title
                                             message:@""
                                      preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertAction* defaultAction =
+    UIAlertAction * endCall =
         [UIAlertAction actionWithTitle:@"End call"
                                  style:UIAlertActionStyleDefault
                                handler:^(UIAlertAction * action) {
                                    [_storage addCallWithDate:[NSDate date] andTarget:contact];
                                }];
     
-    [callAlert addAction:defaultAction];
+    [callAlert addAction:endCall];
     return callAlert;
 }
 

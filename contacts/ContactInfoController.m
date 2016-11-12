@@ -18,6 +18,7 @@
 
 @property (weak) CDContact * contact;
 @property (weak) NSObject<ContactManager> * contactManager;
+@property (weak) CallController * callController;
 
 @end
 
@@ -35,9 +36,12 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 
--(void) useContact:(CDContact*)contact withContactManager:(NSObject<ContactManager>*)contactManager {
+- (void) useContact:(CDContact*)contact
+     contactManager:(NSObject<ContactManager>*)contactManager
+  andCallController:(CallController*)callController {
     _contact = contact;
     _contactManager = contactManager;
+    _callController = callController;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -49,6 +53,12 @@
         [controller setEditorWithContact:_contact andContactManager:_contactManager];
     }
 }
+
+- (IBAction)callButtonTouched:(id)sender {
+    UIAlertController * call = [_callController getCallAlertForContact:_contact];
+    [self presentViewController:call animated:YES completion:nil];
+}
+
 
 - (IBAction)deleteButtonTouched:(id)sender {
     void (^confirmationHandler)(UIAlertAction * action)  = ^(UIAlertAction * action) {
