@@ -14,6 +14,7 @@
 @interface ContactsController()
 
 @property (strong) DataStorage * storage;
+@property (strong) CallController * callController;
 @property (strong) FetchedDataSource * fetchedDataSource;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -43,10 +44,12 @@
 
 #pragma mark - defined by protocols
 
-- (void)useDataStorage:(DataStorage*)storage {
+- (void) useDataStorage:(DataStorage*)storage andCallController:(CallController*)callController {
     _storage = storage;
+    _callController = callController;
     
-    _fetchedDataSource = [FetchedDataSource initWithFetchedResultsController:[storage generateFetchedResultsControllerForContacts]
+    NSFetchedResultsController * frc = [storage generateFetchedResultsControllerForContacts];
+    _fetchedDataSource = [FetchedDataSource initWithFetchedResultsController:frc
                                                               andCellCreator:self];
 }
 
@@ -91,15 +94,7 @@
     
     CDContact * contact = [_fetchedDataSource dataAtIndexPath:indexPath];
     
-    UIAlertController* callAlert = [UIAlertController alertControllerWithTitle:@"Calling" message:[contact fullName] preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"End call"
-            style:UIAlertActionStyleDefault
-            handler:^(UIAlertAction * action) {
-                [_storage addCallWithDate:[NSDate date] andTarget:contact];
-            }];
-    
-    [callAlert addAction:defaultAction];
+    UIAlertController* callAlert = [_callController getCallAlertForContact:contact];
     [self presentViewController:callAlert animated:YES completion:nil];
 }
 

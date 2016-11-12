@@ -13,7 +13,8 @@
 
 @interface HistoryController()
 
-@property (strong) DataStorage* storage;
+@property (strong) DataStorage * storage;
+@property (strong) CallController * callController;
 @property (strong) FetchedDataSource * fetchedDataSource;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -39,10 +40,12 @@
     [_tableView reloadData];
 }
 
-- (void)useDataStorage:(DataStorage*)storage {
+- (void) useDataStorage:(DataStorage*)storage andCallController:(CallController*)callController {
     _storage = storage;
+    _callController = callController;
     
-    _fetchedDataSource = [FetchedDataSource initWithFetchedResultsController:[storage generateFetchedResultsControllerForCalls]
+    NSFetchedResultsController * frc = [storage generateFetchedResultsControllerForCalls];
+    _fetchedDataSource = [FetchedDataSource initWithFetchedResultsController:frc
                                                               andCellCreator:self];
 }
 

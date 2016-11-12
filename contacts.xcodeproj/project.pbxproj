@@ -18,6 +18,7 @@
 		846A63021DD4F68200275925 /* CDContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 846A63011DD4F68200275925 /* CDContact.m */; };
 		846A63051DD4F69D00275925 /* CDCall.m in Sources */ = {isa = PBXBuildFile; fileRef = 846A63041DD4F69D00275925 /* CDCall.m */; };
 		84AD03F41DD714C100F4029B /* ConfirmationAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AD03F31DD714C100F4029B /* ConfirmationAlert.m */; };
+		84AD03F91DD7302A00F4029B /* CallController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AD03F81DD7302A00F4029B /* CallController.m */; };
 		84C205B91DC9E676000A4440 /* PrimaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C205B81DC9E676000A4440 /* PrimaryViewController.m */; };
 		84C205BC1DC9EC5C000A4440 /* DataStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C205BB1DC9EC5C000A4440 /* DataStorage.m */; };
 		84C34CA81DD488E7003332A8 /* SegueNames.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C34CA71DD488E7003332A8 /* SegueNames.m */; };
@@ -49,6 +50,8 @@
 		846A63041DD4F69D00275925 /* CDCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDCall.m; path = CoreData/CDCall.m; sourceTree = "<group>"; };
 		84AD03F21DD714C100F4029B /* ConfirmationAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmationAlert.h; sourceTree = "<group>"; };
 		84AD03F31DD714C100F4029B /* ConfirmationAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmationAlert.m; sourceTree = "<group>"; };
+		84AD03F71DD7302A00F4029B /* CallController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallController.h; sourceTree = "<group>"; };
+		84AD03F81DD7302A00F4029B /* CallController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallController.m; sourceTree = "<group>"; };
 		84C205B71DC9E676000A4440 /* PrimaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrimaryViewController.h; sourceTree = "<group>"; };
 		84C205B81DC9E676000A4440 /* PrimaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrimaryViewController.m; sourceTree = "<group>"; };
 		84C205BA1DC9EA52000A4440 /* DataStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataStorage.h; sourceTree = "<group>"; };
@@ -153,6 +156,8 @@
 				84C205B81DC9E676000A4440 /* PrimaryViewController.m */,
 				8463B7E81DD5EB3900AB33EB /* EditContactViewController.h */,
 				8463B7E91DD5EB3900AB33EB /* EditContactViewController.m */,
+				84AD03F71DD7302A00F4029B /* CallController.h */,
+				84AD03F81DD7302A00F4029B /* CallController.m */,
 			);
 			name = viewControllers;
 			sourceTree = "<group>";
@@ -253,6 +258,7 @@
 				8463B7EA1DD5EB3900AB33EB /* EditContactViewController.m in Sources */,
 				846A63051DD4F69D00275925 /* CDCall.m in Sources */,
 				84C34CA81DD488E7003332A8 /* SegueNames.m in Sources */,
+				84AD03F91DD7302A00F4029B /* CallController.m in Sources */,
 				846A63021DD4F68200275925 /* CDContact.m in Sources */,
 				84C205BC1DC9EC5C000A4440 /* DataStorage.m in Sources */,
 				84C646C71DC8A3A600499C70 /* ContactsController.m in Sources */,

@@ -26,9 +26,3 @@
 - (NSFetchedResultsController*) generateFetchedResultsControllerForCalls;
 
 @end
-
-@protocol DataStorageUser
-
-- (void) useDataStorage:(DataStorage*)storage;
-
-@end

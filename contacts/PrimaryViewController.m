@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "PrimaryViewController.h"
-#import "DataStorage.h"
 
 @interface PrimaryViewController()
 
@@ -23,9 +22,10 @@
     
     NSPersistentContainer * container = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).persistentContainer;
     DataStorage * storage = [DataStorage initWithPersistentContainer:container];
+    CallController * callController = [CallController initWithStorage:storage];
     
-    for (NSObject<DataStorageUser>* controller in [self viewControllers]) {
-        [controller useDataStorage:storage];
+    for (NSObject<InitializedWithPrimaryVC>* controller in [self viewControllers]) {
+        [controller useDataStorage:storage andCallController:callController];
     }
 }
 
