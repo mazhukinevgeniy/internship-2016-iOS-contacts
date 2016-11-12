@@ -94,6 +94,7 @@
 		8419C5FE1DC7E93300ECE223 /* contacts */ = {
 			isa = PBXGroup;
 			children = (
+				84AD03F51DD72DA800F4029B /* constants */,
 				84C70D5D1DCB5A06002D03AB /* model */,
 				84C70D5C1DCB59D4002D03AB /* viewControllers */,
 				8419C6021DC7E93300ECE223 /* AppDelegate.h */,
@@ -104,10 +105,6 @@
 				8419C6101DC7E93300ECE223 /* Info.plist */,
 				8419C5FF1DC7E93300ECE223 /* Supporting Files */,
 				84CCE7401DD317EF0002BDEE /* DataModel.xcdatamodeld */,
-				84C34CA61DD488E7003332A8 /* SegueNames.h */,
-				84C34CA71DD488E7003332A8 /* SegueNames.m */,
-				84C34CA91DD489C7003332A8 /* CoreDataKeys.h */,
-				84C34CAA1DD489C7003332A8 /* CoreDataKeys.m */,
 			);
 			path = contacts;
 			sourceTree = "<group>";
@@ -120,9 +117,32 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		84AD03F51DD72DA800F4029B /* constants */ = {
+			isa = PBXGroup;
+			children = (
+				84C34CA61DD488E7003332A8 /* SegueNames.h */,
+				84C34CA71DD488E7003332A8 /* SegueNames.m */,
+				84C34CA91DD489C7003332A8 /* CoreDataKeys.h */,
+				84C34CAA1DD489C7003332A8 /* CoreDataKeys.m */,
+			);
+			name = constants;
+			sourceTree = "<group>";
+		};
+		84AD03F61DD72DD600F4029B /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				8462F7761DD5B5C300F172B5 /* FetchedDataSource.h */,
+				8462F7771DD5B5C300F172B5 /* FetchedDataSource.m */,
+				84AD03F21DD714C100F4029B /* ConfirmationAlert.h */,
+				84AD03F31DD714C100F4029B /* ConfirmationAlert.m */,
+			);
+			name = utils;
+			sourceTree = "<group>";
+		};
 		84C70D5C1DCB59D4002D03AB /* viewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				84AD03F61DD72DD600F4029B /* utils */,
 				8419C6051DC7E93300ECE223 /* ContactInfoController.h */,
 				8419C6061DC7E93300ECE223 /* ContactInfoController.m */,
 				84C646C51DC8A3A600499C70 /* ContactsController.h */,
@@ -131,12 +151,8 @@
 				84C646C91DC8A43F00499C70 /* HistoryController.m */,
 				84C205B71DC9E676000A4440 /* PrimaryViewController.h */,
 				84C205B81DC9E676000A4440 /* PrimaryViewController.m */,
-				8462F7761DD5B5C300F172B5 /* FetchedDataSource.h */,
-				8462F7771DD5B5C300F172B5 /* FetchedDataSource.m */,
 				8463B7E81DD5EB3900AB33EB /* EditContactViewController.h */,
 				8463B7E91DD5EB3900AB33EB /* EditContactViewController.m */,
-				84AD03F21DD714C100F4029B /* ConfirmationAlert.h */,
-				84AD03F31DD714C100F4029B /* ConfirmationAlert.m */,
 			);
 			name = viewControllers;
 			sourceTree = "<group>";
