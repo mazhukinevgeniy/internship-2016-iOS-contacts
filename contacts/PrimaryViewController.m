@@ -24,8 +24,8 @@
     DataStorage * storage = [DataStorage initWithPersistentContainer:container];
     CallController * callController = [CallController initWithStorage:storage];
     
-    for (NSObject<InitializedWithPrimaryVC>* controller in [self viewControllers]) {
-        [controller useDataStorage:storage andCallController:callController];
+    for (UINavigationController * controller in [self viewControllers]) {
+        [[[controller viewControllers] firstObject] useDataStorage:storage andCallController:callController];
     }
 }
 
