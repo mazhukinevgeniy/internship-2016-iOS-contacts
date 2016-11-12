@@ -63,7 +63,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eya-Mv-AvS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="674" y="3"/>
+            <point key="canvasLocation" x="503" y="-50"/>
         </scene>
         <!--Contact-->
         <scene sceneID="3gW-r4-XKZ">
@@ -77,38 +77,52 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LLp-XI-KVM">
-                                <rect key="frame" x="57" y="203" width="249" height="53"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Yj-2o-IBi">
+                                <rect key="frame" x="62.5" y="134" width="250" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="09e-Vt-BQh"/>
+                                    <constraint firstAttribute="height" constant="30" id="6CP-ik-F60"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Yj-2o-IBi">
-                                <rect key="frame" x="57" y="275" width="249" height="55"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SQN-fV-441">
-                                <rect key="frame" x="158" y="368" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SQN-fV-441">
+                                <rect key="frame" x="172.5" y="214" width="30" height="30"/>
                                 <state key="normal" title="Call"/>
                                 <connections>
                                     <action selector="callButtonTouched:" destination="K6U-bR-1bJ" eventType="touchUpInside" id="uGP-tZ-RDf"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8kb-Xj-jAD">
-                                <rect key="frame" x="128" y="431" width="118" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8kb-Xj-jAD">
+                                <rect key="frame" x="164.5" y="254" width="45" height="30"/>
                                 <state key="normal" title="Delete"/>
                                 <connections>
                                     <action selector="deleteButtonTouched:" destination="K6U-bR-1bJ" eventType="touchUpInside" id="Zbt-JO-s4u"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LLp-XI-KVM">
+                                <rect key="frame" x="62.5" y="94" width="250" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="8cJ-ph-NFb"/>
+                                    <constraint firstAttribute="height" constant="30" id="aXe-Yy-nEo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8kb-Xj-jAD" firstAttribute="centerX" secondItem="Oq0-o2-hvB" secondAttribute="centerX" id="1FI-ha-XKW"/>
+                            <constraint firstItem="0Yj-2o-IBi" firstAttribute="leading" secondItem="LLp-XI-KVM" secondAttribute="leading" id="Kp9-au-Fml"/>
+                            <constraint firstItem="8kb-Xj-jAD" firstAttribute="top" secondItem="SQN-fV-441" secondAttribute="bottom" constant="10" id="hEW-rW-EhG"/>
+                            <constraint firstItem="LLp-XI-KVM" firstAttribute="top" secondItem="4c7-6Z-mWm" secondAttribute="bottom" constant="30" id="kvu-Qb-JiQ"/>
+                            <constraint firstItem="LLp-XI-KVM" firstAttribute="centerX" secondItem="Oq0-o2-hvB" secondAttribute="centerX" id="ky3-K9-Fue"/>
+                            <constraint firstItem="SQN-fV-441" firstAttribute="centerX" secondItem="Oq0-o2-hvB" secondAttribute="centerX" id="lBn-pB-hWB"/>
+                            <constraint firstItem="0Yj-2o-IBi" firstAttribute="top" secondItem="LLp-XI-KVM" secondAttribute="bottom" constant="10" id="pFY-Yg-p9z"/>
+                            <constraint firstItem="SQN-fV-441" firstAttribute="top" secondItem="0Yj-2o-IBi" secondAttribute="bottom" constant="50" id="yEV-XE-Q5s"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Contact info" id="h8A-Kd-udk">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="sqc-ws-Kh5">
@@ -125,7 +139,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ajZ-vM-jtd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2034" y="2"/>
+            <point key="canvasLocation" x="979" y="-51"/>
         </scene>
         <!--Edit contact-->
         <scene sceneID="md4-Ju-yWj">
@@ -216,7 +230,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ldt-Pq-UgH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1014" y="907"/>
+            <point key="canvasLocation" x="746" y="887"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="31k-V5-UHz">
@@ -232,7 +246,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mA1-eT-5fK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-890" y="-188"/>
+            <point key="canvasLocation" x="-639" y="-188"/>
         </scene>
         <!--Contacts-->
         <scene sceneID="gd3-uU-X33">
@@ -302,7 +316,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LDr-Om-M40" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="673" y="-778"/>
+            <point key="canvasLocation" x="503" y="-896"/>
         </scene>
         <!--Primary View Controller-->
         <scene sceneID="Aa8-sT-ejB">
