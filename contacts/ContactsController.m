@@ -16,6 +16,7 @@
 @property (strong) DataStorage * storage;
 @property (strong) CallController * callController;
 @property (strong) FetchedDataSource * fetchedDataSource;
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
@@ -25,7 +26,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -40,7 +40,6 @@
     
     [_tableView reloadData];
 }
-
 
 #pragma mark - defined by protocols
 
@@ -80,10 +79,6 @@
         CDContact * contact = [_fetchedDataSource dataAtIndexPath:[_tableView indexPathForSelectedRow]];
         
         [contactInfoController useContact:contact contactManager:_storage andCallController:_callController];
-    } else if ([segueID isEqualToString:ADD_CONTACT]) {
-        EditContactViewController * editController = [segue destinationViewController];
-        
-        [editController setEditorWithContact:nil andContactManager:_storage];
     }
 }
 

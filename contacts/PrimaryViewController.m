@@ -7,9 +7,13 @@
 //
 
 #import "AppDelegate.h"
+#import "EditContactViewController.h"
+#import "SegueNames.h"
 #import "PrimaryViewController.h"
 
 @interface PrimaryViewController()
+
+@property (strong) DataStorage * storage;
 
 @end
 
@@ -21,11 +25,19 @@
     [super viewDidLoad];
     
     NSPersistentContainer * container = ((AppDelegate *)[[UIApplication sharedApplication] delegate]).persistentContainer;
-    DataStorage * storage = [DataStorage initWithPersistentContainer:container];
-    CallController * callController = [CallController initWithStorage:storage];
+    _storage = [DataStorage initWithPersistentContainer:container];
+    CallController * callController = [CallController initWithStorage:_storage];
     
     for (NSObject<InitializedWithPrimaryVC>* controller in [self viewControllers]) {
-        [controller useDataStorage:storage andCallController:callController];
+        [controller useDataStorage:_storage andCallController:callController];
+    }
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:ADD_CONTACT]) {
+        EditContactViewController * editController = [segue destinationViewController];
+        
+        [editController setEditorWithContact:nil andContactManager:_storage];
     }
 }
 
