@@ -7,6 +7,7 @@
 //
 
 #import "EditContactViewController.h"
+#import "ConfirmationAlert.h"
 #import "ContactInfoController.h"
 #import "SegueNames.h"
 
@@ -50,22 +51,14 @@
 }
 
 - (IBAction)deleteButtonTouched:(id)sender {
-    UIAlertController* confirmationAlert = [UIAlertController alertControllerWithTitle:@"Confirmation" message:@"Are you sure?" preferredStyle:UIAlertControllerStyleAlert];
+    void (^confirmationHandler)(UIAlertAction * action)  = ^(UIAlertAction * action) {
+        [_contactManager deleteContact:_contact];
+        [[self navigationController] popViewControllerAnimated:YES];
+    };
     
-    UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Cancel"
-                                                     style:UIAlertActionStyleDefault
-                                                   handler:^(UIAlertAction * action) {}];
-    
-    UIAlertAction* delete =
-        [UIAlertAction actionWithTitle:@"Delete"
-                                 style:UIAlertActionStyleDefault
-                               handler:^(UIAlertAction * action) {
-                                   [_contactManager deleteContact:_contact];
-                                   [[self navigationController] popViewControllerAnimated:YES];
-                               }];
-    
-    [confirmationAlert addAction:cancel];
-    [confirmationAlert addAction:delete];
+    UIAlertController* confirmationAlert = [ConfirmationAlert getAlertWithMessage:@"Delete contact?"
+                                                                   customResponse:@"Delete"
+                                                         andCustomResponseHandler:confirmationHandler];
     
     [self presentViewController:confirmationAlert animated:YES completion:nil];
 }
