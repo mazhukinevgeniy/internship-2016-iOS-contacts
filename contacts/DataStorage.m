@@ -61,27 +61,6 @@
     }
 }
 
-- (void) addContactWithFirstName:(NSString*)fName
-                        lastName:(NSString*)lName
-                          number:(NSString*)phoneNumber {
-    assert(fName != nil);
-    assert(lName != nil);
-    assert(phoneNumber != nil);
-    
-    //TODO: validate all parameters
-    
-    NSManagedObjectContext * context = _persistentContainer.viewContext;
-    CDContact *coreDataContact = [NSEntityDescription insertNewObjectForEntityForName:CONTACT_ENTITY
-                                                               inManagedObjectContext:context];
-    [coreDataContact setValue:phoneNumber forKey:NUMBER_KEY];
-    [coreDataContact setValue:fName forKey:FIRST_NAME_KEY];
-    [coreDataContact setValue:lName forKey:LAST_NAME_KEY];
-    [coreDataContact setValue:[NSNumber numberWithBool:NO] forKey:HIDDEN_KEY];
-    
-    [self saveContext:context];
-    [self updateFetchers:_activeContactFetchers];
-}
-
 - (void) addCallWithDate:(NSDate*)date
                andTarget:(CDContact*)contact {
     assert(date != nil);
@@ -99,6 +78,7 @@
     [self updateFetchers:_activeCallFetchers];
 }
 
+#pragma mark - Fetched Results Controller generation
 
 - (NSFetchedResultsController*) generateFRCWithRequest:(NSFetchRequest*)request
                                           andCacheName:(NSString*)cacheName
@@ -143,7 +123,39 @@
     return [self generateFRCWithRequest:request andCacheName:@"callsCache" andAddItTo:_activeCallFetchers];
 }
 
-- (void) tryToDeleteContact:(CDContact*)contact {
+#pragma mark - ContactManager methods
+
+- (void) addContactWithFirstName:(nonnull NSString*)fName
+                        lastName:(nonnull NSString*)lName
+                          number:(nonnull NSString*)phoneNumber {
+    assert(fName != nil);
+    assert(lName != nil);
+    assert(phoneNumber != nil);
+    
+    //TODO: validate all parameters
+    
+    NSManagedObjectContext * context = _persistentContainer.viewContext;
+    CDContact *coreDataContact = [NSEntityDescription insertNewObjectForEntityForName:CONTACT_ENTITY
+                                                               inManagedObjectContext:context];
+    [coreDataContact setValue:phoneNumber forKey:NUMBER_KEY];
+    [coreDataContact setValue:fName forKey:FIRST_NAME_KEY];
+    [coreDataContact setValue:lName forKey:LAST_NAME_KEY];
+    [coreDataContact setValue:[NSNumber numberWithBool:NO] forKey:HIDDEN_KEY];
+    
+    [self saveContext:context];
+    [self updateFetchers:_activeContactFetchers];
+}
+
+- (void) saveChangesToContact:(nonnull CDContact*)contact {
+    if (contact.managedObjectContext == nil) {
+        NSLog(@"Context is invalid, that shouldn't be the case; contact %@", [contact toString]);
+    } else if ([contact hasChanges]) {
+        [self saveContext:contact.managedObjectContext];
+        [self updateFetchers:_activeContactFetchers];
+    }
+}
+
+- (void) deleteContact:(nonnull CDContact*)contact {
     NSManagedObjectContext * context = _persistentContainer.viewContext;
     
     if ([contact.calls count] == 0) {

@@ -74,12 +74,13 @@
     
     if ([segueID isEqualToString:SHOW_CONTACT]) {
         ContactInfoController * contactInfoController = [segue destinationViewController];
+        CDContact * contact = [_fetchedDataSource dataAtIndexPath:[_tableView indexPathForSelectedRow]];
         
-        [contactInfoController useContact:[_fetchedDataSource dataAtIndexPath:[_tableView indexPathForSelectedRow]] withContactRemover:_storage];
+        [contactInfoController useContact:contact withContactManager:_storage];
     } else if ([segueID isEqualToString:ADD_CONTACT]) {
         EditContactViewController * editController = [segue destinationViewController];
         
-        [editController setEditorWithContact:nil];
+        [editController setEditorWithContact:nil andContactManager:_storage];
     }
 }
 

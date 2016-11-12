@@ -10,6 +10,8 @@
 
 @interface EditContactViewController ()
 
+@property (weak) NSObject<ContactManager> * contactManager;
+
 @end
 
 @implementation EditContactViewController
@@ -24,7 +26,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void) setEditorWithContact:(CDContact* _Nullable)contact {
+- (void) setEditorWithContact:(nullable CDContact*)contact
+            andContactManager:(nonnull NSObject<ContactManager>*)contactManager {
+    _contactManager = contactManager;
+    
     if (contact == nil) {
         [self setTitle:@"New contact"];
     } else {

@@ -9,10 +9,11 @@
 #import <UIKit/UIKit.h>
 
 #import "CDContact.h"
+#import "DataStorageProtocols.h"
 
 @interface EditContactViewController : UIViewController
 
-- (void) setEditorWithContact:(CDContact* _Nullable)contact; //TODO: modify signature to pass something
-//this controller could use saving context (for true edits) and addContactWith(...) for new contacts
+- (void) setEditorWithContact:(nullable CDContact*)contact
+            andContactManager:(nonnull NSObject<ContactManager>*)contactManager;
 
 @end

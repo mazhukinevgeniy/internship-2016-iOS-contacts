@@ -6,8 +6,14 @@
 //  Copyright © 2016 noname. All rights reserved.
 //
 
-@protocol CanDeleteContact
+@protocol ContactManager
 
-- (void) tryToDeleteContact:(CDContact*)contact;
+- (void) addContactWithFirstName:(nonnull NSString*)fName
+                        lastName:(nonnull NSString*)lName
+                          number:(nonnull NSString*)phoneNumber;
+
+- (void) saveChangesToContact:(nonnull CDContact*)contact;
+
+- (void) deleteContact:(nonnull CDContact*)contact;
 
 @end

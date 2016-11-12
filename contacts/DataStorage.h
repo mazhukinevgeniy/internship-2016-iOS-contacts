@@ -12,14 +12,12 @@
 
 #import <CoreData/CoreData.h>
 
-@interface DataStorage : NSObject<CanDeleteContact>
+@interface DataStorage : NSObject<ContactManager>
 
 - (DataStorage*) initWithPersistentContainer:(NSPersistentContainer*)container;
 + (DataStorage*) initWithPersistentContainer:(NSPersistentContainer*)container;
 
-- (void) addContactWithFirstName:(NSString*)fName
-                        lastName:(NSString*)lName
-                          number:(NSString*)phoneNumber;
+
 - (void) addCallWithDate:(NSDate*)date
                andTarget:(CDContact*)contact;
 

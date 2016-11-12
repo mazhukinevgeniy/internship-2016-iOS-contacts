@@ -15,8 +15,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *numberLabel;
 
-@property (weak) CDContact* contact;
-@property (weak) NSObject<CanDeleteContact>* contactRemover;
+@property (weak) CDContact * contact;
+@property (weak) NSObject<ContactManager> * contactManager;
 
 @end
 
@@ -34,9 +34,9 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 
--(void) useContact:(CDContact*)contact withContactRemover:(NSObject<CanDeleteContact>*)remover {
+-(void) useContact:(CDContact*)contact withContactManager:(NSObject<ContactManager>*)contactManager {
     _contact = contact;
-    _contactRemover = remover;
+    _contactManager = contactManager;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -45,7 +45,7 @@
     if ([[segue identifier] isEqualToString:EDIT_CONTACT]) {
         EditContactViewController * controller = [segue destinationViewController];
         
-        [controller setEditorWithContact:_contact];
+        [controller setEditorWithContact:_contact andContactManager:_contactManager];
     }
 }
 
@@ -60,7 +60,7 @@
         [UIAlertAction actionWithTitle:@"Delete"
                                  style:UIAlertActionStyleDefault
                                handler:^(UIAlertAction * action) {
-                                   [_contactRemover tryToDeleteContact:_contact];
+                                   [_contactManager deleteContact:_contact];
                                    [[self navigationController] popViewControllerAnimated:YES];
                                }];
     

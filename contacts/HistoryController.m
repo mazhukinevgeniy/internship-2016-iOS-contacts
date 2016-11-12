@@ -76,7 +76,7 @@
         
         CDCall * call = [_fetchedDataSource dataAtIndexPath:[_tableView indexPathForSelectedRow]];
         
-        [contactInfoController useContact:call.contact withContactRemover:_storage];
+        [contactInfoController useContact:call.contact withContactManager:_storage];
     }
 }
 

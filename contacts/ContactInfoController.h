@@ -12,7 +12,7 @@
 
 @interface ContactInfoController : UIViewController
 
--(void) useContact:(CDContact*)contact withContactRemover:(NSObject<CanDeleteContact>*)remover;
+-(void) useContact:(CDContact*)contact withContactManager:(NSObject<ContactManager>*)contactManager;
 
 @end
 
