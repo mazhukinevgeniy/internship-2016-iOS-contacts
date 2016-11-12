@@ -6,8 +6,9 @@
 //  Copyright © 2016 noname. All rights reserved.
 //
 
-#import "HistoryController.h"
+#import "ConfirmationAlert.h"
 #import "ContactInfoController.h"
+#import "HistoryController.h"
 #import "SegueNames.h"
 
 @interface HistoryController()
@@ -85,6 +86,24 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)removeButtonTouched:(id)sender {
+    CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:_tableView];
+    NSIndexPath* indexPath = [_tableView indexPathForRowAtPoint:buttonPosition];
+    
+    CDCall * call = [_fetchedDataSource dataAtIndexPath:indexPath];
+    
+    void (^confirmationHandler)(UIAlertAction * action)  = ^(UIAlertAction * action) {
+        [_storage deleteCall:call];
+        [_tableView reloadData];
+    };
+    
+    UIAlertController* confirmationAlert = [ConfirmationAlert getAlertWithMessage:@"Delete call?"
+                                                                   customResponse:@"Delete"
+                                                         andCustomResponseHandler:confirmationHandler];
+    
+    [self presentViewController:confirmationAlert animated:YES completion:nil];
 }
 
 /*

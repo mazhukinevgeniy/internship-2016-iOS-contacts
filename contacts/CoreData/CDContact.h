@@ -14,9 +14,13 @@
 
 @property (readonly, strong) NSString* firstName;
 @property (readonly, strong) NSString* lastName;
+
 @property (readonly, strong) NSString* number;
+
 @property (readonly, strong) NSSet* calls;
 //TODO: investigate: does strong mean anything here?
+
+@property (readonly, strong) NSNumber* hidden;
 
 -(NSString*) fullName;
 -(NSString*) toString;

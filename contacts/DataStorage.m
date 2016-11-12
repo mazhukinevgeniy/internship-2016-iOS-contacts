@@ -78,6 +78,27 @@
     [self updateFetchers:_activeCallFetchers];
 }
 
+- (void) deleteCall:(CDCall*)call {
+    assert (call != nil);
+    
+    CDContact * target = call.contact;
+    NSUInteger oldCallCount = target.hidden ? [target.calls count] : 0;
+    //don't evaluate target.calls if it's not needed
+    
+    NSManagedObjectContext * context = _persistentContainer.viewContext;
+    [context deleteObject:call];
+    
+    if (oldCallCount == 1) {
+        [context deleteObject:target];
+        [self saveContext:context];
+        [self updateFetchers:_activeContactFetchers];
+    } else {
+        [self saveContext:context];
+    }
+    
+    [self updateFetchers:_activeCallFetchers];
+}
+
 #pragma mark - Fetched Results Controller generation
 
 - (NSFetchedResultsController*) generateFRCWithRequest:(NSFetchRequest*)request
@@ -85,10 +106,11 @@
                                             andAddItTo:(NSMutableArray*)array{
     NSManagedObjectContext *context = _persistentContainer.viewContext;
     
-    NSFetchedResultsController * fetchedResults = [[NSFetchedResultsController alloc] initWithFetchRequest:request
-                                                                                      managedObjectContext:context
-                                                                                        sectionNameKeyPath:nil
-                                                                                                 cacheName:cacheName];
+    NSFetchedResultsController * fetchedResults =
+        [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                            managedObjectContext:context
+                                              sectionNameKeyPath:nil
+                                                       cacheName:cacheName];
     //TODO: check if it'll work correctly if cache name is the same
     
     NSError *error = nil;

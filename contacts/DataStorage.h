@@ -20,6 +20,7 @@
 
 - (void) addCallWithDate:(NSDate*)date
                andTarget:(CDContact*)contact;
+- (void) deleteCall:(CDCall*)call;
 
 - (NSFetchedResultsController*) generateFetchedResultsControllerForContacts;
 - (NSFetchedResultsController*) generateFetchedResultsControllerForCalls;

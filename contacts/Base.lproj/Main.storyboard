@@ -32,7 +32,21 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="17d-Il-Lo4" id="S88-vC-iie">
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wkh-Uc-LrB">
+                                                    <rect key="frame" x="207" y="7" width="33" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="1" green="0.2777864945987073" blue="0.3188428743463112" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <state key="normal" title="X"/>
+                                                    <connections>
+                                                        <action selector="removeButtonTouched:" destination="3ss-fS-pws" eventType="touchUpInside" id="w6d-s8-dyI"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
                                         </tableViewCellContentView>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" button="YES"/>
+                                        </accessibility>
                                         <connections>
                                             <segue destination="K6U-bR-1bJ" kind="show" identifier="showContact" id="cRM-nX-EWz"/>
                                         </connections>
@@ -241,7 +255,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="gC1-FD-8Ni"/>
         <segue reference="jy1-3i-mqL"/>
+        <segue reference="cRM-nX-EWz"/>
     </inferredMetricsTieBreakers>
 </document>
