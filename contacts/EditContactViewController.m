@@ -12,12 +12,42 @@
 
 @property (weak) NSObject<ContactManager> * contactManager;
 
+@property (strong) CDContact * contact;
+
+@property (weak, nonatomic) IBOutlet UITextField *firstNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *lastNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *numberTextField;
+
+- (void) showFirstName:(NSString*)fName
+              lastName:(NSString*)lName
+             andNumber:(NSString*)number;
+
 @end
 
 @implementation EditContactViewController
 
+- (void) showFirstName:(NSString*)fName
+              lastName:(NSString*)lName
+             andNumber:(NSString*)number {
+    [_firstNameTextField setText:fName];
+    [_lastNameTextField setText:lName];
+    [_numberTextField setText:number];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    if (_contact == nil) {
+        [self setTitle:@"New contact"];
+        
+        [self showFirstName:@"" lastName:@"" andNumber:@""];
+    } else {
+        [self setTitle:@"Edit contact"];
+        
+        [self showFirstName:_contact.firstName
+                   lastName:_contact.lastName
+                  andNumber:_contact.number];
+    }
     // Do any additional setup after loading the view.
 }
 
@@ -29,13 +59,17 @@
 - (void) setEditorWithContact:(nullable CDContact*)contact
             andContactManager:(nonnull NSObject<ContactManager>*)contactManager {
     _contactManager = contactManager;
-    
-    if (contact == nil) {
-        [self setTitle:@"New contact"];
+    _contact = contact;
+}
+
+- (IBAction)saveButtonTouched:(id)sender {
+    if (_contact == nil) {
+        //TODO: call addContact
     } else {
-        [self setTitle:@"Edit contact"];
-        //TODO: set values of textfields
+        //TODO: modify contact
     }
+    
+    [[self navigationController] popViewControllerAnimated:YES];
 }
 
 /*
