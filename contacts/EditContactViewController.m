@@ -7,6 +7,7 @@
 //
 
 #import "EditContactViewController.h"
+#import "CoreDataKeys.h"
 
 @interface EditContactViewController ()
 
@@ -63,11 +64,21 @@
 }
 
 - (IBAction)saveButtonTouched:(id)sender {
+    NSString * fName = _firstNameTextField.text;
+    NSString * lName = _lastNameTextField.text;
+    NSString * number = _numberTextField.text;
+    
     if (_contact == nil) {
-        //TODO: call addContact
+        [_contactManager addContactWithFirstName:fName lastName:lName number:number];
     } else {
-        //TODO: modify contact
+        [_contact setValue:fName forKey:FIRST_NAME_KEY];
+        [_contact setValue:lName forKey:LAST_NAME_KEY];
+        [_contact setValue:number forKey:NUMBER_KEY];
+        
+        [_contactManager saveChangesToContact:_contact];
     }
+    
+    //TODO: add validation; if contact can't be added, show what's the problem
     
     [[self navigationController] popViewControllerAnimated:YES];
 }
