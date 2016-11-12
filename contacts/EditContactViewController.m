@@ -39,11 +39,11 @@
     [super viewDidLoad];
     
     if (_contact == nil) {
-        [self setTitle:@"New contact"];
+        self.navigationItem.title = @"New contact";
         
         [self showFirstName:@"" lastName:@"" andNumber:@""];
     } else {
-        [self setTitle:@"Edit contact"];
+        self.navigationItem.title = @"Edit contact";
         
         [self showFirstName:_contact.firstName
                    lastName:_contact.lastName

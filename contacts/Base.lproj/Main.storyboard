@@ -77,14 +77,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h8v-h7-ulH">
-                                <rect key="frame" x="260" y="72" width="46" height="38"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Edit"/>
-                                <connections>
-                                    <segue destination="hHz-EQ-5F6" kind="show" identifier="editContact" id="jy1-3i-mqL"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LLp-XI-KVM">
                                 <rect key="frame" x="57" y="203" width="249" height="53"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -118,6 +110,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Contact info" id="h8A-Kd-udk">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="sqc-ws-Kh5">
+                            <connections>
+                                <segue destination="hHz-EQ-5F6" kind="show" identifier="editContact" id="au8-fN-CxT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="deleteButton" destination="8kb-Xj-jAD" id="vc3-I0-chs"/>
                         <outlet property="nameLabel" destination="LLp-XI-KVM" id="P5g-wG-fjx"/>
@@ -161,14 +160,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GbT-Vk-R41">
-                                <rect key="frame" x="164" y="443" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Save"/>
-                                <connections>
-                                    <action selector="saveButtonTouched:" destination="hHz-EQ-5F6" eventType="touchUpInside" id="IOU-dI-Ehj"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h00-Lf-ca4">
                                 <rect key="frame" x="44" y="131" width="202" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -193,6 +184,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="V6G-Je-4A8">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="1eQ-uS-QVS">
+                            <connections>
+                                <action selector="saveButtonTouched:" destination="hHz-EQ-5F6" id="UfJ-wr-ISh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="firstNameTextField" destination="h00-Lf-ca4" id="GbW-Ry-Ui5"/>
                         <outlet property="lastNameTextField" destination="ME3-eb-isR" id="SER-KG-g9I"/>
@@ -317,7 +315,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="jkJ-P2-78f"/>
         <segue reference="gC1-FD-8Ni"/>
+        <segue reference="au8-fN-CxT"/>
     </inferredMetricsTieBreakers>
 </document>
