@@ -9,12 +9,14 @@
 #import "EditContactViewController.h"
 #import "ConfirmationAlert.h"
 #import "ContactInfoController.h"
+#import "CoreDataKeys.h"
 #import "SegueNames.h"
 
 @interface ContactInfoController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *numberLabel;
+@property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 
 @property (weak) CDContact * contact;
 @property (weak) NSObject<ContactManager> * contactManager;
@@ -33,7 +35,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    if ([_contact.hidden boolValue]) {
+        [_deleteButton setTitle:@"Restore" forState:UIControlStateNormal];
+    } else {
+        [_deleteButton setTitle:@"Delete" forState:UIControlStateNormal];
+    }
 }
 
 - (void) useContact:(CDContact*)contact
@@ -61,16 +68,23 @@
 
 
 - (IBAction)deleteButtonTouched:(id)sender {
-    void (^confirmationHandler)(UIAlertAction * action)  = ^(UIAlertAction * action) {
-        [_contactManager deleteContact:_contact];
+    if ([_contact.hidden boolValue]) {
+        [_contact setValue:[NSNumber numberWithBool:NO] forKey:HIDDEN_KEY];
+        [_contactManager saveChangesToContact:_contact];
+        
         [[self navigationController] popViewControllerAnimated:YES];
-    };
-    
-    UIAlertController* confirmationAlert = [ConfirmationAlert getAlertWithMessage:@"Delete contact?"
-                                                                   customResponse:@"Delete"
-                                                         andCustomResponseHandler:confirmationHandler];
-    
-    [self presentViewController:confirmationAlert animated:YES completion:nil];
+    } else {
+        void (^confirmationHandler)(UIAlertAction * action)  = ^(UIAlertAction * action) {
+            [_contactManager deleteContact:_contact];
+            [[self navigationController] popViewControllerAnimated:YES];
+        };
+        
+        UIAlertController* confirmationAlert = [ConfirmationAlert getAlertWithMessage:@"Delete contact?"
+                                                                       customResponse:@"Delete"
+                                                             andCustomResponseHandler:confirmationHandler];
+        
+        [self presentViewController:confirmationAlert animated:YES completion:nil];
+    }
 }
 
 
