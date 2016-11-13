@@ -94,22 +94,6 @@
     [self presentViewController:callAlert animated:YES completion:nil];
 }
 
-- (IBAction)addDefaultButtonTouched:(id)sender {
-    if (_storage != nil) {
-        NSArray * names = @[@"Bob", @"", @"Disable roaming", @"Sara"];
-        NSArray * lastNames = @[@"", @"Vasiliev", @"", @"Poppins"];
-        NSArray * numbers = @[@"89123", @"01", @"#101*", @"89654"];
-        
-        for (int i = 0; i < 4; i++) {
-            [_storage addContactWithFirstName:names[i]
-                                     lastName:lastNames[i]
-                                       number:numbers[i]];
-        }
-        
-        [_tableView reloadData];
-    }
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
