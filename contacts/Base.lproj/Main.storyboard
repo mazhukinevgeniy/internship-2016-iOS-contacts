@@ -23,7 +23,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Bp4-Cf-zBh">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Bp4-Cf-zBh">
                                 <rect key="frame" x="18" y="0.0" width="338" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -277,35 +277,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="453-nJ-dUe">
-                                <rect key="frame" x="69" y="259" width="220" height="54"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ab1-cU-5V2">
-                                <rect key="frame" x="69" y="105" width="240" height="448"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ab1-cU-5V2">
+                                <rect key="frame" x="19" y="0.0" width="337" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="350" id="jHU-CC-Q3o"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="contactViewCell" id="h72-ef-0KS">
-                                        <rect key="frame" x="0.0" y="28" width="240" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="337" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="h72-ef-0KS" id="0qe-qF-WOk">
-                                            <rect key="frame" x="0.0" y="0.0" width="240" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="337" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wjb-zv-1OF">
-                                                    <rect key="frame" x="164" y="7" width="46" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wjb-zv-1OF">
+                                                    <rect key="frame" x="284" y="7" width="45" height="30"/>
                                                     <color key="backgroundColor" red="0.84822889397905765" green="0.84822889397905765" blue="0.84822889397905765" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="45" id="U4N-j9-OvI"/>
+                                                        <constraint firstAttribute="height" constant="30" id="Yc4-c0-cMC"/>
+                                                    </constraints>
                                                     <state key="normal" title="Call"/>
                                                     <connections>
                                                         <action selector="callButtonTouched:" destination="5ta-SX-5pt" eventType="touchUpInside" id="miZ-b6-Q2e"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Wjb-zv-1OF" firstAttribute="centerY" secondItem="0qe-qF-WOk" secondAttribute="centerY" id="fzG-I1-zyp"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Wjb-zv-1OF" secondAttribute="trailing" id="ixz-XW-e9U"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <segue destination="K6U-bR-1bJ" kind="show" identifier="showContact" id="gC1-FD-8Ni"/>
@@ -315,6 +317,12 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ab1-cU-5V2" firstAttribute="height" secondItem="koO-c9-pPa" secondAttribute="height" id="0FB-CS-qek"/>
+                            <constraint firstItem="ab1-cU-5V2" firstAttribute="centerY" secondItem="koO-c9-pPa" secondAttribute="centerY" id="15t-lM-frW"/>
+                            <constraint firstItem="ab1-cU-5V2" firstAttribute="width" secondItem="koO-c9-pPa" secondAttribute="width" multiplier="0.9" priority="1" id="c82-R0-KzR"/>
+                            <constraint firstItem="ab1-cU-5V2" firstAttribute="centerX" secondItem="koO-c9-pPa" secondAttribute="centerX" id="gj5-ia-Tvr"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Contacts" id="pMj-D4-rqE"/>
                     <toolbarItems/>
