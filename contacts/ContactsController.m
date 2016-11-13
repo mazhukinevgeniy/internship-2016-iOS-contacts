@@ -63,7 +63,8 @@
     
     CDContact * contact = (CDContact*) managedObject;
     
-    [[cell textLabel] setText:[contact toString]];
+    cell.textLabel.numberOfLines = 0;
+    [[cell textLabel] setText:[NSString stringWithFormat:@"%@\n%@", [contact fullName], contact.number]];
     return cell;
 }
 

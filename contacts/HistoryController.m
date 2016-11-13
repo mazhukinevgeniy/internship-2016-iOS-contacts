@@ -63,10 +63,9 @@
     NSString *dateString = [NSDateFormatter localizedStringFromDate:call.date
                                                           dateStyle:NSDateFormatterShortStyle
                                                           timeStyle:NSDateFormatterShortStyle];
-    
-    [[cell textLabel] setText:[NSString stringWithFormat:@"%@ %@",
+    cell.textLabel.numberOfLines = 0;
+    [[cell textLabel] setText:[NSString stringWithFormat:@"%@\n%@",
                                dateString, [call.contact fullName]]];
-    //TODO: make info more visible, it doesn't fit
     return cell;
 }
 
