@@ -100,9 +100,9 @@
 		8419C5FE1DC7E93300ECE223 /* contacts */ = {
 			isa = PBXGroup;
 			children = (
+				84CBD6941DD8800D00C796A6 /* controller */,
 				84AD03F51DD72DA800F4029B /* constants */,
 				84C70D5D1DCB5A06002D03AB /* model */,
-				84C70D5C1DCB59D4002D03AB /* viewControllers */,
 				8419C6021DC7E93300ECE223 /* AppDelegate.h */,
 				8419C6031DC7E93300ECE223 /* AppDelegate.m */,
 				8419C6081DC7E93300ECE223 /* Main.storyboard */,
@@ -148,7 +148,6 @@
 		84C70D5C1DCB59D4002D03AB /* viewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				84AD03F61DD72DD600F4029B /* utils */,
 				8419C6051DC7E93300ECE223 /* ContactInfoController.h */,
 				8419C6061DC7E93300ECE223 /* ContactInfoController.m */,
 				84C646C51DC8A3A600499C70 /* ContactsController.h */,
@@ -159,8 +158,6 @@
 				84C205B81DC9E676000A4440 /* PrimaryViewController.m */,
 				8463B7E81DD5EB3900AB33EB /* EditContactViewController.h */,
 				8463B7E91DD5EB3900AB33EB /* EditContactViewController.m */,
-				84AD03F71DD7302A00F4029B /* CallController.h */,
-				84AD03F81DD7302A00F4029B /* CallController.m */,
 			);
 			name = viewControllers;
 			sourceTree = "<group>";
@@ -168,17 +165,36 @@
 		84C70D5D1DCB5A06002D03AB /* model */ = {
 			isa = PBXGroup;
 			children = (
+				84CBD6951DD8806B00C796A6 /* managed objects */,
 				84C205BA1DC9EA52000A4440 /* DataStorage.h */,
 				84C205BB1DC9EC5C000A4440 /* DataStorage.m */,
-				846A63001DD4F68200275925 /* CDContact.h */,
-				846A63011DD4F68200275925 /* CDContact.m */,
-				846A63031DD4F69D00275925 /* CDCall.h */,
-				846A63041DD4F69D00275925 /* CDCall.m */,
 				8463B7E71DD5D97400AB33EB /* DataStorageProtocols.h */,
 				84CBD68B1DD8635F00C796A6 /* ContactValidator.h */,
 				84CBD68C1DD8635F00C796A6 /* ContactValidator.m */,
 			);
 			name = model;
+			sourceTree = "<group>";
+		};
+		84CBD6941DD8800D00C796A6 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				84AD03F71DD7302A00F4029B /* CallController.h */,
+				84AD03F81DD7302A00F4029B /* CallController.m */,
+				84C70D5C1DCB59D4002D03AB /* viewControllers */,
+				84AD03F61DD72DD600F4029B /* utils */,
+			);
+			name = controller;
+			sourceTree = "<group>";
+		};
+		84CBD6951DD8806B00C796A6 /* managed objects */ = {
+			isa = PBXGroup;
+			children = (
+				846A63001DD4F68200275925 /* CDContact.h */,
+				846A63011DD4F68200275925 /* CDContact.m */,
+				846A63031DD4F69D00275925 /* CDCall.h */,
+				846A63041DD4F69D00275925 /* CDCall.m */,
+			);
+			name = "managed objects";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

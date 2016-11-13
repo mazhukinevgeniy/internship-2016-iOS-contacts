@@ -9,7 +9,6 @@
 #import "AlertFactory.h"
 #import "EditContactViewController.h"
 #import "ContactInfoController.h"
-#import "CoreDataKeys.h"
 #import "SegueNames.h"
 
 @interface ContactInfoController ()

@@ -7,7 +7,6 @@
 //
 
 #import "CDContact.h"
-#import "CoreDataKeys.h"
 
 @implementation CDContact
 
