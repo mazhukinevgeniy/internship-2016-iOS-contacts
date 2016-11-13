@@ -36,6 +36,7 @@
     }
     
     _defaultTintColor = _addContactButton.tintColor;
+    [self navigationItem].title = @"Contacts";
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -47,6 +48,8 @@
 }
 
 - (void) tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item {
+    [self navigationItem].title = item.title;
+    
     if ([item.title isEqualToString:@"Contacts"]) {
         _addContactButton.enabled = YES;
         _addContactButton.tintColor = _defaultTintColor;
