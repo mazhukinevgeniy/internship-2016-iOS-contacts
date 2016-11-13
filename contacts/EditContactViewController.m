@@ -6,8 +6,8 @@
 //  Copyright © 2016 noname. All rights reserved.
 //
 
+#import "AlertFactory.h"
 #import "EditContactViewController.h"
-#import "CoreDataKeys.h"
 
 @interface EditContactViewController ()
 
@@ -69,7 +69,23 @@
     if ([errors count] == 0) {
         [[self navigationController] popViewControllerAnimated:YES];
     } else {
-        //TODO: show errors
+        NSString * message;
+        int firstError = [((NSNumber*)[errors firstObject]) intValue];
+        
+        if (firstError == WRONG_NUMBER) {
+            message = @"Allowed symbols for number are 0-9, +, *, #";
+        } else if (firstError == NO_NUMBER) {
+            message = @"Contact should have a number";
+        } else {
+            //must be a name error
+            message = @"Contact should have a name";
+        }
+        
+        UIAlertController * alert = [AlertFactory alertWithTitle:@"Error"
+                                                      andMessage:message];
+        [alert addAction:[AlertFactory simpleAction:@"OK"]];
+        
+        [self presentViewController:alert animated:YES completion:nil];
     }
 }
 

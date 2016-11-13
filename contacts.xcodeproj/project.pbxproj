@@ -17,7 +17,6 @@
 		8463B7EA1DD5EB3900AB33EB /* EditContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8463B7E91DD5EB3900AB33EB /* EditContactViewController.m */; };
 		846A63021DD4F68200275925 /* CDContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 846A63011DD4F68200275925 /* CDContact.m */; };
 		846A63051DD4F69D00275925 /* CDCall.m in Sources */ = {isa = PBXBuildFile; fileRef = 846A63041DD4F69D00275925 /* CDCall.m */; };
-		84AD03F41DD714C100F4029B /* ConfirmationAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AD03F31DD714C100F4029B /* ConfirmationAlert.m */; };
 		84AD03F91DD7302A00F4029B /* CallController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84AD03F81DD7302A00F4029B /* CallController.m */; };
 		84C205B91DC9E676000A4440 /* PrimaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C205B81DC9E676000A4440 /* PrimaryViewController.m */; };
 		84C205BC1DC9EC5C000A4440 /* DataStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C205BB1DC9EC5C000A4440 /* DataStorage.m */; };
@@ -26,6 +25,7 @@
 		84C646C71DC8A3A600499C70 /* ContactsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C646C61DC8A3A600499C70 /* ContactsController.m */; };
 		84C646CA1DC8A43F00499C70 /* HistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C646C91DC8A43F00499C70 /* HistoryController.m */; };
 		84CBD68D1DD8635F00C796A6 /* ContactValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CBD68C1DD8635F00C796A6 /* ContactValidator.m */; };
+		84CBD6931DD875AC00C796A6 /* AlertFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CBD6921DD875AC00C796A6 /* AlertFactory.m */; };
 		84CCE7421DD317EF0002BDEE /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84CCE7401DD317EF0002BDEE /* DataModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
@@ -49,8 +49,6 @@
 		846A63011DD4F68200275925 /* CDContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDContact.m; path = CoreData/CDContact.m; sourceTree = "<group>"; };
 		846A63031DD4F69D00275925 /* CDCall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CDCall.h; path = CoreData/CDCall.h; sourceTree = "<group>"; };
 		846A63041DD4F69D00275925 /* CDCall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CDCall.m; path = CoreData/CDCall.m; sourceTree = "<group>"; };
-		84AD03F21DD714C100F4029B /* ConfirmationAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfirmationAlert.h; sourceTree = "<group>"; };
-		84AD03F31DD714C100F4029B /* ConfirmationAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfirmationAlert.m; sourceTree = "<group>"; };
 		84AD03F71DD7302A00F4029B /* CallController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallController.h; sourceTree = "<group>"; };
 		84AD03F81DD7302A00F4029B /* CallController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallController.m; sourceTree = "<group>"; };
 		84C205B71DC9E676000A4440 /* PrimaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrimaryViewController.h; sourceTree = "<group>"; };
@@ -67,6 +65,8 @@
 		84C646C91DC8A43F00499C70 /* HistoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryController.m; sourceTree = "<group>"; };
 		84CBD68B1DD8635F00C796A6 /* ContactValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactValidator.h; sourceTree = "<group>"; };
 		84CBD68C1DD8635F00C796A6 /* ContactValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactValidator.m; sourceTree = "<group>"; };
+		84CBD6911DD875AC00C796A6 /* AlertFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertFactory.h; sourceTree = "<group>"; };
+		84CBD6921DD875AC00C796A6 /* AlertFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertFactory.m; sourceTree = "<group>"; };
 		84CCE7411DD317EF0002BDEE /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -139,8 +139,8 @@
 			children = (
 				8462F7761DD5B5C300F172B5 /* FetchedDataSource.h */,
 				8462F7771DD5B5C300F172B5 /* FetchedDataSource.m */,
-				84AD03F21DD714C100F4029B /* ConfirmationAlert.h */,
-				84AD03F31DD714C100F4029B /* ConfirmationAlert.m */,
+				84CBD6911DD875AC00C796A6 /* AlertFactory.h */,
+				84CBD6921DD875AC00C796A6 /* AlertFactory.m */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -256,7 +256,7 @@
 				84CCE7421DD317EF0002BDEE /* DataModel.xcdatamodeld in Sources */,
 				8462F7781DD5B5C300F172B5 /* FetchedDataSource.m in Sources */,
 				84C646CA1DC8A43F00499C70 /* HistoryController.m in Sources */,
-				84AD03F41DD714C100F4029B /* ConfirmationAlert.m in Sources */,
+				84CBD6931DD875AC00C796A6 /* AlertFactory.m in Sources */,
 				84C34CAB1DD489C7003332A8 /* CoreDataKeys.m in Sources */,
 				8419C6071DC7E93300ECE223 /* ContactInfoController.m in Sources */,
 				8419C6041DC7E93300ECE223 /* AppDelegate.m in Sources */,

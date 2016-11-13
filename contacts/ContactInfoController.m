@@ -6,8 +6,8 @@
 //  Copyright © 2016 noname. All rights reserved.
 //
 
+#import "AlertFactory.h"
 #import "EditContactViewController.h"
-#import "ConfirmationAlert.h"
 #import "ContactInfoController.h"
 #import "CoreDataKeys.h"
 #import "SegueNames.h"
@@ -78,11 +78,12 @@
             [[self navigationController] popViewControllerAnimated:YES];
         };
         
-        UIAlertController* confirmationAlert = [ConfirmationAlert getAlertWithMessage:@"Delete contact?"
-                                                                       customResponse:@"Delete"
-                                                             andCustomResponseHandler:confirmationHandler];
+        UIAlertController* alert =
+            [AlertFactory confirmationAlertWithMessage:@"Delete contact?"
+                                        customResponse:@"Delete"
+                                    andResponseHandler:confirmationHandler];
         
-        [self presentViewController:confirmationAlert animated:YES completion:nil];
+        [self presentViewController:alert animated:YES completion:nil];
     }
 }
 

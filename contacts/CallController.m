@@ -6,6 +6,7 @@
 //  Copyright © 2016 noname. All rights reserved.
 //
 
+#import "AlertFactory.h"
 #import "CallController.h"
 
 @interface CallController()
@@ -33,10 +34,7 @@
 - (UIAlertController*) getCallAlertForContact:(CDContact*)contact {
     NSString * title = [NSString stringWithFormat:@"Calling %@", [contact fullName]];
     
-    UIAlertController * callAlert =
-        [UIAlertController alertControllerWithTitle:title
-                                            message:@""
-                                     preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController * callAlert = [AlertFactory alertWithTitle:title andMessage:@""];
     
     UIAlertAction * endCall =
         [UIAlertAction actionWithTitle:@"End call"

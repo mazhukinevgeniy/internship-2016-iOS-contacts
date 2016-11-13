@@ -11,7 +11,8 @@
 typedef enum {
     WRONG_FIRSTNAME,
     WRONG_LASTNAME,
-    WRONG_NUMBER
+    WRONG_NUMBER,
+    NO_NUMBER
 } ContactValidatorFlags;
 
 @protocol ContactManager

@@ -6,7 +6,7 @@
 //  Copyright © 2016 noname. All rights reserved.
 //
 
-#import "ConfirmationAlert.h"
+#import "AlertFactory.h"
 #import "ContactInfoController.h"
 #import "HistoryController.h"
 #import "SegueNames.h"
@@ -101,11 +101,11 @@
         [_tableView reloadData];
     };
     
-    UIAlertController* confirmationAlert = [ConfirmationAlert getAlertWithMessage:@"Delete call?"
-                                                                   customResponse:@"Delete"
-                                                         andCustomResponseHandler:confirmationHandler];
+    UIAlertController* alert = [AlertFactory confirmationAlertWithMessage:@"Delete call?"
+                                                           customResponse:@"Delete"
+                                                       andResponseHandler:confirmationHandler];
     
-    [self presentViewController:confirmationAlert animated:YES completion:nil];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 /*

@@ -52,9 +52,12 @@
     int numberOfPossibleErrors = 3;
     NSMutableArray * errors = [[NSMutableArray alloc] initWithCapacity:numberOfPossibleErrors];
     
-    if (![self validNumber:number]) {
+    if ([number length] == 0) {
+        [errors addObject:[NSNumber numberWithInteger:NO_NUMBER]];
+    } else if (![self validNumber:number]) {
         [errors addObject:[NSNumber numberWithInteger:WRONG_NUMBER]];
     }
+    
     if (![self validFirstName:fName withLastName:lName]) {
         [errors addObject:[NSNumber numberWithInteger:WRONG_FIRSTNAME]];
         [errors addObject:[NSNumber numberWithInteger:WRONG_LASTNAME]];
