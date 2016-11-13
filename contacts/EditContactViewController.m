@@ -23,6 +23,8 @@
               lastName:(NSString*)lName
              andNumber:(NSString*)number;
 
+- (void) showErrors:(NSArray*)errors;
+
 @end
 
 @implementation EditContactViewController
@@ -63,25 +65,33 @@
     _contact = contact;
 }
 
+- (void) showErrors:(NSArray*)errors {
+    if ([errors count] == 0) {
+        [[self navigationController] popViewControllerAnimated:YES];
+    } else {
+        //TODO: show errors
+    }
+}
+
 - (IBAction)saveButtonTouched:(id)sender {
     NSString * fName = _firstNameTextField.text;
     NSString * lName = _lastNameTextField.text;
     NSString * number = _numberTextField.text;
     
+    NSArray * errors = nil;
+    
     if (_contact == nil) {
-        [_contactManager addContactWithFirstName:fName lastName:lName number:number];
+        errors = [_contactManager addContactWithFirstName:fName
+                                                 lastName:lName
+                                                   number:number];
     } else {
-        [_contact setValue:fName forKey:FIRST_NAME_KEY];
-        [_contact setValue:lName forKey:LAST_NAME_KEY];
-        [_contact setValue:number forKey:NUMBER_KEY];
-        [_contact setValue:[NSNumber numberWithBool:NO] forKey:HIDDEN_KEY];
-        
-        [_contactManager saveChangesToContact:_contact];
+        errors = [_contactManager modifyContact:_contact
+                                  withFirstName:fName
+                                       lastName:lName
+                                         number:number];
     }
     
-    //TODO: add validation; if contact can't be added, show what's the problem
-    
-    [[self navigationController] popViewControllerAnimated:YES];
+    [self showErrors:errors];
 }
 
 /*

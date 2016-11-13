@@ -25,6 +25,7 @@
 		84C34CAB1DD489C7003332A8 /* CoreDataKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C34CAA1DD489C7003332A8 /* CoreDataKeys.m */; };
 		84C646C71DC8A3A600499C70 /* ContactsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C646C61DC8A3A600499C70 /* ContactsController.m */; };
 		84C646CA1DC8A43F00499C70 /* HistoryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84C646C91DC8A43F00499C70 /* HistoryController.m */; };
+		84CBD68D1DD8635F00C796A6 /* ContactValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 84CBD68C1DD8635F00C796A6 /* ContactValidator.m */; };
 		84CCE7421DD317EF0002BDEE /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84CCE7401DD317EF0002BDEE /* DataModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +65,8 @@
 		84C646C61DC8A3A600499C70 /* ContactsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsController.m; sourceTree = "<group>"; };
 		84C646C81DC8A43F00499C70 /* HistoryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryController.h; sourceTree = "<group>"; };
 		84C646C91DC8A43F00499C70 /* HistoryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryController.m; sourceTree = "<group>"; };
+		84CBD68B1DD8635F00C796A6 /* ContactValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactValidator.h; sourceTree = "<group>"; };
+		84CBD68C1DD8635F00C796A6 /* ContactValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactValidator.m; sourceTree = "<group>"; };
 		84CCE7411DD317EF0002BDEE /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -172,6 +175,8 @@
 				846A63031DD4F69D00275925 /* CDCall.h */,
 				846A63041DD4F69D00275925 /* CDCall.m */,
 				8463B7E71DD5D97400AB33EB /* DataStorageProtocols.h */,
+				84CBD68B1DD8635F00C796A6 /* ContactValidator.h */,
+				84CBD68C1DD8635F00C796A6 /* ContactValidator.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -257,6 +262,7 @@
 				8419C6041DC7E93300ECE223 /* AppDelegate.m in Sources */,
 				8463B7EA1DD5EB3900AB33EB /* EditContactViewController.m in Sources */,
 				846A63051DD4F69D00275925 /* CDCall.m in Sources */,
+				84CBD68D1DD8635F00C796A6 /* ContactValidator.m in Sources */,
 				84C34CA81DD488E7003332A8 /* SegueNames.m in Sources */,
 				84AD03F91DD7302A00F4029B /* CallController.m in Sources */,
 				846A63021DD4F68200275925 /* CDContact.m in Sources */,

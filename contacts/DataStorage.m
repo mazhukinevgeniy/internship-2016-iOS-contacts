@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #import "CDContact.h"
+#import "ContactValidator.h"
 #import "CoreDataKeys.h"
 #import "DataStorage.h"
 
@@ -146,34 +147,61 @@
 
 #pragma mark - ContactManager methods
 
-- (void) addContactWithFirstName:(nonnull NSString*)fName
-                        lastName:(nonnull NSString*)lName
-                          number:(nonnull NSString*)phoneNumber {
-    assert(fName != nil);
-    assert(lName != nil);
-    assert(phoneNumber != nil);
+- (nonnull NSArray<NSNumber*>*) addContactWithFirstName:(nonnull NSString*)fName
+                                               lastName:(nonnull NSString*)lName
+                                                 number:(nonnull NSString*)phoneNumber {
+    ContactValidator * validator = [[ContactValidator alloc] init];
     
-    //TODO: validate all parameters
+    NSArray * errors = [validator validateContactWithFirstName:fName lastName:lName andNumber:phoneNumber];
     
-    NSManagedObjectContext * context = _persistentContainer.viewContext;
-    CDContact *coreDataContact = [NSEntityDescription insertNewObjectForEntityForName:CONTACT_ENTITY
-                                                               inManagedObjectContext:context];
-    [coreDataContact setValue:phoneNumber forKey:NUMBER_KEY];
-    [coreDataContact setValue:fName forKey:FIRST_NAME_KEY];
-    [coreDataContact setValue:lName forKey:LAST_NAME_KEY];
-    [coreDataContact setValue:[NSNumber numberWithBool:NO] forKey:HIDDEN_KEY];
-    
-    [self saveContext:context];
-    [self updateFetchers:_activeContactFetchers];
-}
-
-- (void) saveChangesToContact:(nonnull CDContact*)contact {
-    if (contact.managedObjectContext == nil) {
-        NSLog(@"Context is invalid, that shouldn't be the case; contact %@", [contact toString]);
-    } else if ([contact hasChanges]) {
-        [self saveContext:contact.managedObjectContext];
+    if ([errors count] == 0) {
+        NSManagedObjectContext * context = _persistentContainer.viewContext;
+        CDContact *coreDataContact =
+            [NSEntityDescription insertNewObjectForEntityForName:CONTACT_ENTITY
+                                          inManagedObjectContext:context];
+        
+        [coreDataContact setValue:fName forKey:FIRST_NAME_KEY];
+        [coreDataContact setValue:lName forKey:LAST_NAME_KEY];
+        [coreDataContact setValue:phoneNumber forKey:NUMBER_KEY];
+        [coreDataContact setValue:[NSNumber numberWithBool:NO] forKey:HIDDEN_KEY];
+        
+        [self saveContext:context];
         [self updateFetchers:_activeContactFetchers];
     }
+    
+    return errors;
+}
+
+- (nonnull NSArray<NSNumber*>*) modifyContact:(nonnull CDContact*)contact
+                                withFirstName:(nonnull NSString*)fName
+                                     lastName:(nonnull NSString*)lName
+                                       number:(nonnull NSString*)phoneNumber {
+    if (contact.managedObjectContext == nil) {
+        NSLog(@"Context is invalid, that shouldn't be the case; contact %@", [contact toString]);
+        abort();
+    } else {
+        ContactValidator * validator = [[ContactValidator alloc] init];
+        
+        NSArray * errors = [validator validateContactWithFirstName:fName lastName:lName andNumber:phoneNumber];
+        
+        if ([errors count] == 0) {
+            [contact setValue:fName forKey:FIRST_NAME_KEY];
+            [contact setValue:lName forKey:LAST_NAME_KEY];
+            [contact setValue:phoneNumber forKey:NUMBER_KEY];
+            [contact setValue:[NSNumber numberWithBool:NO] forKey:HIDDEN_KEY];
+            
+            [self saveContext:contact.managedObjectContext];
+            [self updateFetchers:_activeContactFetchers];
+        }
+        
+        return errors;
+    }
+}
+
+- (void) restoreContact:(nonnull CDContact*)contact {
+    [contact setValue:[NSNumber numberWithBool:NO] forKey:HIDDEN_KEY];
+    [self saveContext:contact.managedObjectContext];
+    [self updateFetchers:_activeContactFetchers];
 }
 
 - (void) deleteContact:(nonnull CDContact*)contact {

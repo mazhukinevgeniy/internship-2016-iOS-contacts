@@ -69,8 +69,7 @@
 
 - (IBAction)deleteButtonTouched:(id)sender {
     if ([_contact.hidden boolValue]) {
-        [_contact setValue:[NSNumber numberWithBool:NO] forKey:HIDDEN_KEY];
-        [_contactManager saveChangesToContact:_contact];
+        [_contactManager restoreContact:_contact];
         
         [[self navigationController] popViewControllerAnimated:YES];
     } else {
