@@ -111,7 +111,6 @@
                                             managedObjectContext:context
                                               sectionNameKeyPath:nil
                                                        cacheName:cacheName];
-    //TODO: check if it'll work correctly if cache name is the same
     
     NSError *error = nil;
     if (![fetchedResults performFetch:&error]) {
